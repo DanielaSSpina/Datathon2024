@@ -3,20 +3,20 @@ import pandas as pd
 import numpy as np
 
 # Configuração do título do aplicativo
-st.set_page_config(page_title="Projeto de Previsão de Preço de Petróleo", page_icon="📊", layout="wide")
+st.set_page_config(page_title="Projeto de Previsão dados ONG Passos Mágicos", page_icon="📊", layout="wide")
 
-st.markdown("<p style='font-size:40px; color:#B40C40;'>Tech Challenge 4 | Fiap</p>", unsafe_allow_html=True)
+st.markdown("<p style='font-size:40px; color:#B40C40;'>Datathon | Fiap</p>", unsafe_allow_html=True)
 
 # Criando um menu de navegação com `selectbox` ou `radio`
-pagina = st.sidebar.radio("Escolha a Página", ["Introdução", "Metodologia", "Principais Acontecimentos", 
+pagina = st.sidebar.radio("Escolha a Página", ["Introdução", "Metodologia", "Análise", 
                                                "Dashboard Interativo", "MVP", "Referências"])
 
 # Conteúdo de cada página
 if pagina == "Introdução":
     st. image ('Imagens/Passos-magicos-icon-cor.png')
     st.markdown("<h3 style='color:#0367B0;'>Introdução</h3>", unsafe_allow_html=True)
-    st.write('''Este trabalho tem como foco apresentar a análise do preço do petróleo brent, trazendo quatro acontecimentos que auxiliem a explicação das variação do preço e podem variar desde fatores geopolíticos até avanços tecnológicos. 
-Traremos além dos acontecimentos, uma análise por meio de um dashboard dinâmico dos dados, previsão analisada e MVP.''')
+    st.write('''Este trabalho tem como objetivo trazer uma proposta preditiva para mostrar o impacto das ações da ONG Passos Mágicos sobre a comunidade que atendem
+    Os impactos a serem analisados terão como base o perfil dos estudantes atendidos,  informações educacionanais, informações socioeconômicas e as respostas da pesquisa realizada pela ONG.''')
 
     st.markdown("<h3 style='color:#0367B0;'>Ferramentas utilizadas</h3>", unsafe_allow_html=True)
     st.write('Para a realização deste trabalho, foi utilizado as seguintes ferramentas:')
@@ -28,21 +28,43 @@ elif pagina == "Metodologia":
     st. image ('Imagens/abraco-meninos.jpg')
     st.markdown("<h3 style='color:#0367B0;'>Metodologia</h3>", unsafe_allow_html=True)
     st.markdown("<h3 style='color:#145089;'>Origem e análise dos dados</h3>", unsafe_allow_html=True)
-    st.write('Os dados utilizados nesta análise foram extraídos do site do Instituto de Pesquisa Econômica Aplicada (Ipea). Após a extração, os dados foram salvos em um arquivo excel, e importados no python para tratamentos iniciais mostrados abaixo:')
-    st. image ('Imagens/Python/1. Pyhton - importanto bibliotecas.png', caption='importando e instalando bibliotecas necessárias')
-    st. image ('Imagens/Python/2. Python - importando bibliotecas.png', caption='importando e instalando bibliotecas necessárias')
-    st.image('Imagens/Python/3. Python - tratamento de dados.png', caption='importação da base de dados e tratamento inicial')
+    st.write('''Os dados utilizados nesta análise foram extraídos do Drive disponibilizado pela FIAP. 
+    Após a extração, os dados foram salvos em um arquivo excel, passado por um tratamento inicial onde foi ajustado as acentuações em algumas palavras e importados no python para demais tratamenots necessários conforme abaixo:''')
+    st. image ('Imagens/1.1 Leitura e tratamento de Dados.png')
+    st. image ('Imagens/1.2 Leitura e tratamento de Dados.png', caption='importando e instalando bibliotecas necessárias')
 
-    st.markdown("<h3 style='color:#145089;'>Modelo de Machine Learning</h3>", unsafe_allow_html=True)
-    st.write('Para realizar o machine learning dos nossos dados, utilizamos o modelo Prophet, pois é uma ferramenta que se destaca em cenários onde previsões de longo prazo e ajustes a tendências e sazonalidades complexas são necessários.')
-    st. image ('Imagens/Python/9. Python - Estrutura do dado para previsão.png', caption='preparando os dados para o Prophet')
-    st. image ('Imagens/Python/10. Python - Preparação para previsão.png', caption='preparando os dados para o Prophet')
-    st. image ('Imagens/Python/11. Python - Visualização da previsão.png', caption='gráficos plotados de tendência e sazonalidade')
-    st. image ('Imagens/Python/12. Python - Forecasting.png', caption='criação do forecast')
-    st. image ('Imagens/Python/13. Python - Unindo bases para previsão.png', caption='unindo bases para a criação do arquivo de previsão')
-    st. image ('Imagens/Python/14. Python - Acurácia do modelo.png', caption='validando acurácia do modelo')
+    st.markdown("<h3 style='color:#145089;'>Análises iniciais</h3>", unsafe_allow_html=True)
+    st.write('Para realizar o machine learning dos nossos dados, utilizamos o modelo X, pois ?????w.')
+    st. image ('Imagens/2.1 Análise desempenho escolar.png')
+    st. image ('Imagens/2.2 Análise desempenho escolar - defasagem.png')
+    st. image ('Imagens/2.3 Análise desempenho escolar - defasagem.png')
+    st. image ('Imagens/3.1 Visualização de Dados - Notas vs frequência.png')
+    st. image ('Imagens/3.2 Visualização de Dados - Idade vs frequência.png')
+    st. image ('Imagens/3.3 Visualização de Dados - Desempenho vs Idade.png')
+    st. image ('Imagens/3.4 Visualização de Dados - Idade vs Desempenho acadêmico.png')
+    st. image ('Imagens/3.5 Visualização de Dados - Frequencia vs Desempenho escolar.png')
+    st. image ('Imagens/3.6 Visualização de Dados - Taxa de aprovação vs Idade.png')
+    st. image ('Imagens/3.7 Visualização de Dados - Notas vs Tipo de escola.png')
+    st. image ('Imagens/3.8 Visualização de Dados - Desempenho vs idade vs frequência vs tipo de institu.png')
+    st. image ('Imagens/3.9 Visualização de Dados - Faltas vs Idade.png')
+    st. image ('Imagens/3.11 Visualização de Dados - Reprovados vs Idade.png')
 
-elif pagina == "Principais Acontecimentos":
+    st.markdown("<h3 style='color:#145089;'>Machine Learning</h3>", unsafe_allow_html=True)
+    st. image ('Imagens/4.1 Previsão de comportamento - Treinamento.png')
+    st. image ('Imagens/4.1 Previsão de comportamento.png')
+    st. image ('Imagens/4.2 Previsão de comportamento - Comparação entre variáveis.png')
+    st. image ('Imagens/4.3 Previsão de comportamento - Idade vs INDE.png')
+    st. image ('Imagens/4.4 Previsão de comportamento - NLP.png')
+    st. image ('Imagens/4.5 Previsão de comportamento - Feedbacks.png')
+    st. image ('Imagens/4.6 Previsão de comportamento - Gráfico Matriz de confusão.png')
+    st. image ('Imagens/4.6 Previsão de comportamento - Matriz de confusão.png')
+    st. image ('Imagens/4.7 Previsão de comportamento - Distribuição da previsão.png')
+    st. image ('Imagens/4.7 Previsão de comportamento - Gráfico de Distribuição da previsão.png')
+    st. image ('Imagens/5.1 Acurácia de modelo - Gráfico.png')
+    st. image ('Imagens/5.1 Acurácia de modelo.png')
+
+
+elif pagina == "Análise":
     st. image ('Imagens/Passos-magicos-icon-cor.png')
     st.markdown("<h3 style='color:##0367B0;'>Principais Acontecimentos</h3>", unsafe_allow_html=True)
 
@@ -56,16 +78,6 @@ Ela foi criada com o objetivo de estabelecer uma política comum em relação à
 Em 2016, quando os preços do petróleo estavam particularmente baixos, a Opep uniu forças com outros dez grandes produtores de petróleo para criar a Opep+, que tinha como missão reduzir a produção de petróleo e estabilizar o mercado global de energia. A decisão inicial ocorreu em setembro de 2016, durante a reunião em Argel, onde membros da OPEP concordaram em limitar a produção pela primeira vez desde 2008. Em novembro, a OPEP finalizou o acordo, e em dezembro, países não-membros (incluindo Rússia, México e outros) se comprometeram voluntariamente a cortes de produção, formando uma coalizão inédita para controlar o excesso de oferta global de petróleo.
 Essas restrições resultaram em aumentos moderados nos preços do petróleo e ajudaram a recuperar parte da estabilidade do mercado.O acordo se mostrou crucial para amortecer impactos de oscilações no preço do petróleo nos anos seguintes, especialmente durante crises.''')
     st.image('Imagens/Python/7. Python - Visualização do impacto - Acordo opep.png', caption='Imapacto acordo da OPEP - 2016')
-
-    st.markdown("<h3 style='color:#145089;'>Tensões geopolíticas do Oriente Médio:</h3>", unsafe_allow_html=True)
-    st.write('''As tensões geopolíticas no Oriente Médio em 2020 foram intensificadas pela rivalidade entre os EUA e o Irã, além do conflito no Iêmen, que envolvia potências regionais. O assassinato do general iraniano Qassem Soleimani pelos EUA em janeiro de 2020 gerou uma resposta militar do Irã, com ataques a bases americanas no Iraque. Além disso, o Irã atacou instalações petrolíferas sauditas, elevando a volatilidade no mercado de petróleo. O apoio iraniano a grupos no Iêmen, Síria e Iraque intensificou as rivalidades, agravando a crise humanitária no Iêmen. A pandemia de COVID-19 também complicou as relações, embora houvesse tentativas de reaproximação entre países do Golfo. Essas tensões aumentaram a incerteza e volatilidade nos preços de energia, destacando a importância da estabilidade na região para a segurança econômica global.''')
-    st.image('Imagens/Python/5. Python - visualização do impacto - Tensões no oriente.png', caption='Tensão geopolítica do oriente médio - 2020')
-
-    st.markdown("<h3 style='color:#145089;'>Pandemia covid-19</h3>", unsafe_allow_html=True)
-    st.write('''A pandemia de COVID-19, que começou no final de 2019 e se espalhou globalmente em 2020, resultou em uma crise de saúde sem precedentes que afetou todos os aspectos da vida cotidiana, levando a bloqueios, restrições de viagem e mudanças significativas nos padrões de consumo e produção. As economias foram severamente impactadas, com muitos setores enfrentando quedas drásticas na demanda.
-Com a implementação de lockdowns e restrições de movimentação em todo o mundo, a demanda por petróleo caiu drasticamente. Indústrias, transporte e aviação sofreram com reduções severas no consumo. A demanda global de petróleo caiu cerca de 20% em abril de 2020, o que levou a um excesso de oferta significativo.
-Em abril de 2020, o preço do petróleo alcançou um marco histórico com o petróleo WTI (West Texas Intermediate) chegando a valores negativos pela primeira vez, refletindo que os produtores estavam dispostos a pagar para que as pessoas retirassem o petróleo de seus estoques, dado o colapso da demanda e a falta de capacidade de armazenamento.''')
-    st.image('Imagens/Python/4. Python - visualização de impacto - pandemia.png', caption='Pandemia Covid19 2020 - 2021')
 
 elif pagina == "Dashboard Interativo":
     power_bi_url = "https://app.powerbi.com/view?r=eyJrIjoiODljNzU2NjUtNTQzNS00ODhhLWIyYTgtMDY0NzczY2M1MDE0IiwidCI6IjExZGJiZmUyLTg5YjgtNDU0OS1iZTEwLWNlYzM2NGU1OTU1MSIsImMiOjR9"
