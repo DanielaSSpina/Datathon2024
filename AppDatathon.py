@@ -13,7 +13,7 @@ pagina = st.sidebar.radio("Escolha a Página", ["Introdução", "Metodologia", "
 
 # Conteúdo de cada página
 if pagina == "Introdução":
-    st. image ('Imagens/Banner/Página inicial - GG.jpeg')
+    st. image ('Imagens/Passos-magicos-icon-cor.png')
     st.markdown("<h3 style='color:#264CAC;'>Introdução</h3>", unsafe_allow_html=True)
     st.write('''Este trabalho tem como foco apresentar a análise do preço do petróleo brent, trazendo quatro acontecimentos que auxiliem a explicação das variação do preço e podem variar desde fatores geopolíticos até avanços tecnológicos. 
 Traremos além dos acontecimentos, uma análise por meio de um dashboard dinâmico dos dados, previsão analisada e MVP.''')
@@ -25,7 +25,7 @@ Traremos além dos acontecimentos, uma análise por meio de um dashboard dinâmi
     st.write('Streamlit: utilizado para desenvolvimento do MVP (Minimum Viable Product, ou Produto Mínimo Viável) e disponibilização das etapas e informações do projeto.')
 
 elif pagina == "Metodologia":
-    st. image ('Imagens/Banner/Metodologia GG 2048x733.jpeg')
+    st. image ('Imagens/abraco-meninos.jpg')
     st.markdown("<h3 style='color:#264CAC;'>Metodologia</h3>", unsafe_allow_html=True)
     st.markdown("<h3 style='color:#6C778A;'>Origem e análise dos dados</h3>", unsafe_allow_html=True)
     st.write('Os dados utilizados nesta análise foram extraídos do site do Instituto de Pesquisa Econômica Aplicada (Ipea). Após a extração, os dados foram salvos em um arquivo excel, e importados no python para tratamentos iniciais mostrados abaixo:')
@@ -43,7 +43,7 @@ elif pagina == "Metodologia":
     st. image ('Imagens/Python/14. Python - Acurácia do modelo.png', caption='validando acurácia do modelo')
 
 elif pagina == "Principais Acontecimentos":
-    st. image ('Imagens/Banner/Acontecimentos GG 2048x733.jpeg')
+    st. image ('Imagens/Passos-magicos-icon-cor.png')
     st.markdown("<h3 style='color:#264CAC;'>Principais Acontecimentos</h3>", unsafe_allow_html=True)
 
     st.markdown("<h3 style='color:#6C778A;'>Crise econômica de 2008:</h3>", unsafe_allow_html=True)
@@ -131,7 +131,7 @@ elif pagina == "MVP":
     )
 
 elif pagina == "Referências":
-    st. image ('Imagens/Banner/Referência GG.jpg')
+    st. image ('Imagens/Passos-magicos-icon-cor.png')
     st.markdown("<h3 style='color:#264CAC;'>Referências</h3>", unsafe_allow_html=True)
    
     st.markdown("<h3 style='color:#6C778A;'>Crise financeira asiática 1997 - 1998</h3>", unsafe_allow_html=True)
