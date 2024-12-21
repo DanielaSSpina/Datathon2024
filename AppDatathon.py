@@ -34,6 +34,8 @@ elif pagina == "Metodologia":
     st. image ('Imagens/1.2 Leitura e tratamento de Dados.png', caption='importando e instalando bibliotecas necessárias')
 
     st.markdown("<h3 style='color:#145089;'>Análises iniciais</h3>", unsafe_allow_html=True)
+
+  
     st.write('Para realizar o machine learning dos nossos dados, utilizamos o modelo X, pois ?????w.')
     st. image ('Imagens/2.1 Análise desempenho escolar.png')
     st. image ('Imagens/2.2 Análise desempenho escolar - defasagem.png')
@@ -49,7 +51,10 @@ elif pagina == "Metodologia":
     st. image ('Imagens/3.9 Visualização de Dados - Faltas vs Idade.png')
     st. image ('Imagens/3.11 Visualização de Dados - Reprovados vs Idade.png')
 
+  
     st.markdown("<h3 style='color:#145089;'>Machine Learning</h3>", unsafe_allow_html=True)
+  
+  
     st. image ('Imagens/4.1 Previsão de comportamento - Treinamento.png')
     st. image ('Imagens/4.1 Previsão de comportamento.png')
     st. image ('Imagens/4.2 Previsão de comportamento - Comparação entre variáveis.png')
