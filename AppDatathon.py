@@ -13,7 +13,7 @@ pagina = st.sidebar.radio("Escolha a Página", ["Introdução", "Metodologia", "
 
 # Conteúdo de cada página
 if pagina == "Introdução":
-    st. image ('Imagens/Passos-magicos-icon-cor.png')
+    st. image ('imagens/Passos-magicos-icon-cor.png')
     st.markdown("<h3 style='color:#0367B0;'>Introdução</h3>", unsafe_allow_html=True)
     st.write('''Este trabalho tem como objetivo trazer uma proposta preditiva para mostrar o impacto das ações da ONG Passos Mágicos sobre a comunidade que atendem
     Os impactos a serem analisados terão como base o perfil dos estudantes atendidos,  informações educacionanais, informações socioeconômicas e as respostas da pesquisa realizada pela ONG.''')
