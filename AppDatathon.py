@@ -9,7 +9,7 @@ st.markdown("<p style='font-size:40px; color:#B40C40;'>Datathon | Fiap</p>", uns
 
 # Criando um menu de navegação com `selectbox` ou `radio`
 pagina = st.sidebar.radio("Escolha a Página", ["Introdução", "Metodologia", "Análise", 
-                                               "Dashboard Interativo", "MVP", "Referências"])
+                                               "Dashboard Interativo", "Referências"])
 
 # Conteúdo de cada página
 if pagina == "Introdução":
@@ -25,7 +25,7 @@ if pagina == "Introdução":
     st.write('Streamlit: utilizado para desenvolvimento do MVP (Minimum Viable Product, ou Produto Mínimo Viável) e disponibilização das etapas e informações do projeto.')
 
 elif pagina == "Metodologia":
-    st. image ('Imagens/abraco-meninos.jpg')
+    st. image ('imagens/Passos-magicos-icon-cor.png')
     st.markdown("<h3 style='color:#0367B0;'>Metodologia</h3>", unsafe_allow_html=True)
     st.markdown("<h3 style='color:#145089;'>Origem e análise dos dados</h3>", unsafe_allow_html=True)
     st.write('''Os dados utilizados nesta análise foram extraídos do Drive disponibilizado pela FIAP. 
@@ -70,7 +70,7 @@ elif pagina == "Metodologia":
 
 
 elif pagina == "Análise":
-    st. image ('Imagens/Passos-magicos-icon-cor.png')
+    st. image ('imagens/Passos-magicos-icon-cor.png')
     st.markdown("<h3 style='color:##0367B0;'>Principais Acontecimentos</h3>", unsafe_allow_html=True)
 
     st.markdown("<h3 style='color:#145089;'>Crise econômica de 2008:</h3>", unsafe_allow_html=True)
@@ -89,63 +89,6 @@ elif pagina == "Dashboard Interativo":
     iframe_code = f'<iframe width="80%" height="700px" src="{power_bi_url}" frameborder="0" allowFullScreen="true"></iframe>'
 
     st.components.v1.html(iframe_code, height=600)
-
-elif pagina == "MVP":
-    st. image ('Imagens/Banner/MVP GG 2048x733.jpeg')
-    st.markdown("<h3 style='color:#0367B0;'>MVP</h3>", unsafe_allow_html=True)
-
-    # Corrigindo a indentação do decorador e da função
-    @st.cache
-    def load_data():
-        data_path = "Documentos/Dados  petroleo Forecasting .xlsx"  # Substitua com o nome correto ao fazer upload
-        data = pd.read_excel(data_path)
-        data['data'] = pd.to_datetime(data['data'])
-        return data
-
-    # Configuração inicial
-        st.markdown("<h3 style='color:#145089;'>Previsão do Preço do Petróleo</h3>", unsafe_allow_html=True)
-    st.write("Utilizando dados do modelo Prophet para análise e visualização interativa.")
-
-    data = load_data()
-
-    # Filtro por intervalo de datas
-    st.sidebar.header("Filtro de Datas")
-    start_date = st.sidebar.date_input("Data Inicial", data['data'].min())
-    end_date = st.sidebar.date_input("Data Final", data['data'].max())
-
-    filtered_data = data[(data['data'] >= pd.to_datetime(start_date)) & (data['data'] <= pd.to_datetime(end_date))]
-
-    # Exibir dados filtrados
-    st.write(f"Exibindo dados entre {start_date} e {end_date}")
-    st.dataframe(filtered_data)
-
-    # Visualização do Preço Realizado e Previsão
-    st.markdown("<h3 style='color:#145089;'>Comparação: Preço Realizado vs. Previsão</h3>", unsafe_allow_html=True)
-    fig, ax = plt.subplots(figsize=(10, 6))
-    ax.plot(filtered_data['data'], filtered_data['Fechamento realizado'], label="Fechamento Realizado", color="blue")
-    ax.plot(filtered_data['data'], filtered_data['preco_previsto'], label="Preço Previsto", color="orange")
-    ax.set_title("Preço do Petróleo: Realizado vs. Previsto")
-    ax.set_xlabel("Data")
-    ax.set_ylabel("Preço (US$)")
-    ax.legend()
-    st.pyplot(fig)
-
-    # Insights resumidos
-    st.markdown("<h3 style='color:#145089;'>Insights</h3>", unsafe_allow_html=True)
-    st.write("1. A previsão segue a tendência geral dos preços realizados com desvios ocasionais.")
-    st.write("2. As maiores diferenças entre previsão e valores reais ocorrem em períodos de maior volatilidade.")
-    st.write("3. O modelo mostra boa performance em períodos de estabilidade.")
-    st.write("4. Eventos econômicos ou geopolíticos específicos podem impactar a precisão.")
-
-    # Download dos dados filtrados
-    st.markdown("<h3 style='color:#145089;'>Exportar Dados Filtrados</h3>", unsafe_allow_html=True)
-    csv = filtered_data.to_csv(index=False)
-    st.download_button(
-        label="Baixar dados filtrados como CSV",
-        data=csv,
-        file_name="dados_filtrados_petroleo.csv",
-        mime="text/csv"
-    )
 
 elif pagina == "Referências":
     st. image ('Imagens/Passos-magicos-icon-cor.png')
