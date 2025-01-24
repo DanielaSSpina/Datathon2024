@@ -4,7 +4,7 @@ Prezados,
 
 Este projeto está disponível no [Github DanielaSSPina - TechChallenge4]([https://github.com/DanielaSSpina/TechChallenge4](https://github.com/DanielaSSpina/Datathon2024)), este repositório contém os arquivos e códigos do estudo proposto pela FIAP como parte do projeto de conclusão da fase5 da pós-graduação em Data Analytics. O estudo faz uma análise das ações realizadas pela ONG Passos Mágicos trazendo os impactos que a ONG realizou sobre o desempenho de estudantes e levantar indicadores de performance.
 
-O projeto foi implementado e está disponível no Streamlit. Vocês podem acessá-lo por meio do seguinte link: [Datathon - Análise ONG Passos Mágicos - Streamlit](x)
+O projeto foi implementado e está disponível no Streamlit. Vocês podem acessá-lo por meio do seguinte link: [Datathon - Análise ONG Passos Mágicos - Streamlit]((https://datathon2024ong.streamlit.app/))
 
 A estrutura do repositório está organizada da seguinte forma:
 
