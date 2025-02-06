@@ -8,8 +8,7 @@ st.set_page_config(page_title="Projeto de Previsão dados ONG Passos Mágicos", 
 st.markdown("<p style='font-size:40px; color:#B40C40;'>Datathon | Fiap</p>", unsafe_allow_html=True)
 
 # Criando um menu de navegação com `selectbox` ou `radio`
-pagina = st.sidebar.radio("Escolha a Página", ["Introdução", "Metodologia", "Análise", 
-                                               "Dashboard Interativo", "Referências"])
+pagina = st.sidebar.radio("Escolha a Página", ["Introdução", "Metodologia","Dashboard Interativo", "MVP", "Análise", "Referências"])
 
 # Conteúdo de cada página
 if pagina == "Introdução":
@@ -66,6 +65,27 @@ elif pagina == "Metodologia":
     st. image ('imagens/9.1 Visualização de Dados - Acurácia do modelo.png')
     st. image ('imagens/9.1 Gráfico - Acurácia do modelo.png')
 
+elif pagina == "Dashboard Interativo":
+    power_bi_url = "https://app.powerbi.com/view?r=eyJrIjoiNTUxNjljY2YtOWJjMi00Y2IyLTgxOTItNGRlYzRjMmY3OWM1IiwidCI6IjExZGJiZmUyLTg5YjgtNDU0OS1iZTEwLWNlYzM2NGU1OTU1MSIsImMiOjR9"
+    iframe_code = f'<iframe width="80%" height="700px" src="{power_bi_url}" frameborder="0" allowFullScreen="true"></iframe>'
+
+    st.components.v1.html(iframe_code, height=600)
+  
+  elif pagina == "MVP":
+    st. image ('imagens/Passos-magicos-icon-cor.png')
+    st.markdown("<h3 style='color:##0367B0;'>Principais Acontecimentos</h3>", unsafe_allow_html=True)
+
+    st.markdown("<h3 style='color:#145089;'>Crise econômica de 2008:</h3>", unsafe_allow_html=True)
+    st.write('''A crise financeira de 2008, a mais grave desde a Grande Depressão, começou nos Estados Unidos e rapidamente se espalhou globalmente, afetando bancos, mercados financeiros e milhões de pessoas. A bolha imobiliária foi alimentada por empréstimos de alto risco, chamados "subprime", e pela especulação de que imóveis seriam investimentos seguros. Quando os preços dos imóveis caíram, muitos proprietários ficaram com dívidas maiores do que o valor das casas. Isso causou grandes perdas em instituições financeiras, como Lehman Brothers, que faliu em setembro de 2008. O congelamento do crédito afetou empresas e consumidores, gerando uma recessão global. O preço do petróleo inicialmente subiu devido a preocupações geopolíticas, mas caiu drasticamente no final de 2008, devido à queda na demanda causada pela desaceleração econômica.''')
+    st.image('Imagens/Python/6. Python - visualização do impacto - Crise econômica.png', caption='Crise econômica de 2008')
+
+    st.markdown("<h3 style='color:#145089;'>Impacto do acordo da OPEP:</h3>", unsafe_allow_html=True)
+    st.write('''A OPEP (Organização dos Países Exportadores de Petróleo e Aliados) que foi criada em 1960 inicialmente por 5 países que exportam petróleos e ao longo dos anos outros paises foram convidados a participar.
+Ela foi criada com o objetivo de estabelecer uma política comum em relação à produção e à venda de petróleo, de forma a influenciar os preços do petróleo no mercado internacional. Por serem grandes produtores, seus membros são capazes mexer com as cotações, ao aumentar ou cortar a produção de forma coordenada.
+Em 2016, quando os preços do petróleo estavam particularmente baixos, a Opep uniu forças com outros dez grandes produtores de petróleo para criar a Opep+, que tinha como missão reduzir a produção de petróleo e estabilizar o mercado global de energia. A decisão inicial ocorreu em setembro de 2016, durante a reunião em Argel, onde membros da OPEP concordaram em limitar a produção pela primeira vez desde 2008. Em novembro, a OPEP finalizou o acordo, e em dezembro, países não-membros (incluindo Rússia, México e outros) se comprometeram voluntariamente a cortes de produção, formando uma coalizão inédita para controlar o excesso de oferta global de petróleo.
+Essas restrições resultaram em aumentos moderados nos preços do petróleo e ajudaram a recuperar parte da estabilidade do mercado.O acordo se mostrou crucial para amortecer impactos de oscilações no preço do petróleo nos anos seguintes, especialmente durante crises.''')
+    st.image('Imagens/Python/7. Python - Visualização do impacto - Acordo opep.png', caption='Imapacto acordo da OPEP - 2016')
+    
 elif pagina == "Análise":
     st. image ('imagens/Passos-magicos-icon-cor.png')
     st.markdown("<h3 style='color:##0367B0;'>Principais Acontecimentos</h3>", unsafe_allow_html=True)
@@ -80,12 +100,6 @@ Ela foi criada com o objetivo de estabelecer uma política comum em relação à
 Em 2016, quando os preços do petróleo estavam particularmente baixos, a Opep uniu forças com outros dez grandes produtores de petróleo para criar a Opep+, que tinha como missão reduzir a produção de petróleo e estabilizar o mercado global de energia. A decisão inicial ocorreu em setembro de 2016, durante a reunião em Argel, onde membros da OPEP concordaram em limitar a produção pela primeira vez desde 2008. Em novembro, a OPEP finalizou o acordo, e em dezembro, países não-membros (incluindo Rússia, México e outros) se comprometeram voluntariamente a cortes de produção, formando uma coalizão inédita para controlar o excesso de oferta global de petróleo.
 Essas restrições resultaram em aumentos moderados nos preços do petróleo e ajudaram a recuperar parte da estabilidade do mercado.O acordo se mostrou crucial para amortecer impactos de oscilações no preço do petróleo nos anos seguintes, especialmente durante crises.''')
     st.image('Imagens/Python/7. Python - Visualização do impacto - Acordo opep.png', caption='Imapacto acordo da OPEP - 2016')
-
-elif pagina == "Dashboard Interativo":
-    power_bi_url = "https://app.powerbi.com/view?r=eyJrIjoiODljNzU2NjUtNTQzNS00ODhhLWIyYTgtMDY0NzczY2M1MDE0IiwidCI6IjExZGJiZmUyLTg5YjgtNDU0OS1iZTEwLWNlYzM2NGU1OTU1MSIsImMiOjR9"
-    iframe_code = f'<iframe width="80%" height="700px" src="{power_bi_url}" frameborder="0" allowFullScreen="true"></iframe>'
-
-    st.components.v1.html(iframe_code, height=600)
 
 elif pagina == "Referências":
     st. image ('Imagens/Passos-magicos-icon-cor.png')
