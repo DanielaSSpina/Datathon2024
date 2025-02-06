@@ -65,12 +65,15 @@ elif pagina == "Metodologia":
     st. image ('imagens/9.1 Visualização de Dados - Acurácia do modelo.png')
     st. image ('imagens/9.1 Gráfico - Acurácia do modelo.png')
 
-elif pagina == "Dashboard Interativo" :
-    power_bi_url = "https://app.powerbi.com/view?r=eyJrIjoiNzFkOTBjMGMtYmM3ZC00YzE0LWI1YjYtNjdhNTE0MzE0NWIyIiwidCI6IjExZGJiZmUyLTg5YjgtNDU0OS1iZTEwLWNlYzM2NGU1OTU1MSIsImMiOjR9&pageName=cb3dc97fa06772a0514d"
-    iframe_html = f"""    <iframe width="100%" height="600" src="{powerbi_url}" frameborder="0" allowFullScreen="true"></iframe>"""
-    # Exibe o painel do Power BI
-    st.components.v1.html(iframe_html, height=700)
+elif pagina == "Dashboard interativo":
+    # URL do painel do Power BI
+    powerbi_url = 'https://app.powerbi.com/view?r=eyJrIjoiNzFkOTBjMGMtYmM3ZC00YzE0LWI1YjYtNjdhNTE0MzE0NWIyIiwidCI6IjExZGJiZmUyLTg5YjgtNDU0OS1iZTEwLWNlYzM2NGU1OTU1MSIsImMiOjR9'
+
+    # HTML com iframe para incorporar
+    iframe_html = f"""    <iframe title="DataThon2025" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiNzFkOTBjMGMtYmM3ZC00YzE0LWI1YjYtNjdhNTE0MzE0NWIyIiwidCI6IjExZGJiZmUyLTg5YjgtNDU0OS1iZTEwLWNlYzM2NGU1OTU1MSIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>"""
     
+    # Exibe o painel do Power BI usando markdown com HTML
+    st.markdown(iframe_html, unsafe_allow_html=True)
 
 elif pagina == "MVP":
     st. image ('imagens/Passos-magicos-icon-cor.png')
