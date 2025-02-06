@@ -66,7 +66,7 @@ elif pagina == "Metodologia":
     st. image ('imagens/9.1 Gráfico - Acurácia do modelo.png')
 
 elif pagina == "Dashboard Interativo" :
-    power_bi_url = "https://app.powerbi.com/view?r=eyJrIjoiNTUxNjljY2YtOWJjMi00Y2IyLTgxOTItNGRlYzRjMmY3OWM1IiwidCI6IjExZGJiZmUyLTg5YjgtNDU0OS1iZTEwLWNlYzM2NGU1OTU1MSIsImMiOjR9"
+    power_bi_url = "https://app.powerbi.com/view?r=eyJrIjoiNzFkOTBjMGMtYmM3ZC00YzE0LWI1YjYtNjdhNTE0MzE0NWIyIiwidCI6IjExZGJiZmUyLTg5YjgtNDU0OS1iZTEwLWNlYzM2NGU1OTU1MSIsImMiOjR9"
     iframe_code = f'<iframe width="70%" height="1300" src="{power_bi_url}" frameborder="0" allowFullScreen="true"></iframe>'
 
     st.components.v1.html(iframe_code, height=600)
