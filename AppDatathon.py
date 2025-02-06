@@ -70,7 +70,7 @@ elif pagina == "Dashboard Interativo":
     powerbi_url = 'https://app.powerbi.com/view?r=eyJrIjoiNzFkOTBjMGMtYmM3ZC00YzE0LWI1YjYtNjdhNTE0MzE0NWIyIiwidCI6IjExZGJiZmUyLTg5YjgtNDU0OS1iZTEwLWNlYzM2NGU1OTU1MSIsImMiOjR9&pageName=cb3dc97fa06772a0514d'
 
     # HTML com iframe para incorporar
-    iframe_html = f"""<iframe title="DataThon2025" width="100%" height="800" src="{powerbi_url}" frameborder="0" allowFullScreen="true"></iframe>'''
+    iframe_html = f"""<iframe title="DataThon2025" width="100%" height="800" src="{powerbi_url}" frameborder="0" allowFullScreen="true"></iframe>"""
     
     # Exibe o painel do Power BI usando markdown com HTML
     st.markdown(iframe_html, unsafe_allow_html=True)
