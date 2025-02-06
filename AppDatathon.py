@@ -66,7 +66,7 @@ elif pagina == "Metodologia":
     st. image ('imagens/9.1 Gráfico - Acurácia do modelo.png')
 
 elif pagina == "Dashboard interativo":
-    st.markdow('Teste")
+    st.markdow('Teste')
 
 elif pagina == "MVP":
     st. image ('imagens/Passos-magicos-icon-cor.png')
