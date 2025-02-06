@@ -67,7 +67,7 @@ elif pagina == "Metodologia":
 
 elif pagina == "Dashboard Interativo":
     power_bi_url = "https://app.powerbi.com/view?r=eyJrIjoiNTUxNjljY2YtOWJjMi00Y2IyLTgxOTItNGRlYzRjMmY3OWM1IiwidCI6IjExZGJiZmUyLTg5YjgtNDU0OS1iZTEwLWNlYzM2NGU1OTU1MSIsImMiOjR9"
-    iframe_code = f'<iframe width="80%" height="700px" src="{power_bi_url}" frameborder="0" allowFullScreen="true"></iframe>'
+    iframe_code = f'<iframe width="70%" height="800px" src="{power_bi_url}" frameborder="0" allowFullScreen="true"></iframe>'
 
     st.components.v1.html(iframe_code, height=600)
   
