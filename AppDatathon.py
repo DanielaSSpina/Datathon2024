@@ -71,7 +71,7 @@ elif pagina == "Dashboard Interativo":
 
     st.components.v1.html(iframe_code, height=600)
   
-  elif pagina == "MVP":
+elif pagina == "MVP":
     st. image ('imagens/Passos-magicos-icon-cor.png')
     st.markdown("<h3 style='color:##0367B0;'>Principais Acontecimentos</h3>", unsafe_allow_html=True)
 
