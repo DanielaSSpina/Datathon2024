@@ -77,18 +77,63 @@ elif pagina == "Dashboard Interativo":
 
 elif pagina == "MVP":
     st. image ('imagens/Passos-magicos-icon-cor.png')
-    st.markdown("<h3 style='color:##0367B0;'>Principais Acontecimentos</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color:##0367B0;'>MVP</h3>", unsafe_allow_html=True)
 
-    st.markdown("<h3 style='color:#145089;'>Crise econômica de 2008:</h3>", unsafe_allow_html=True)
-    st.write('''A crise financeira de 2008, a mais grave desde a Grande Depressão, começou nos Estados Unidos e rapidamente se espalhou globalmente, afetando bancos, mercados financeiros e milhões de pessoas. A bolha imobiliária foi alimentada por empréstimos de alto risco, chamados "subprime", e pela especulação de que imóveis seriam investimentos seguros. Quando os preços dos imóveis caíram, muitos proprietários ficaram com dívidas maiores do que o valor das casas. Isso causou grandes perdas em instituições financeiras, como Lehman Brothers, que faliu em setembro de 2008. O congelamento do crédito afetou empresas e consumidores, gerando uma recessão global. O preço do petróleo inicialmente subiu devido a preocupações geopolíticas, mas caiu drasticamente no final de 2008, devido à queda na demanda causada pela desaceleração econômica.''')
-    st.image('Imagens/Python/6. Python - visualização do impacto - Crise econômica.png', caption='Crise econômica de 2008')
+  # Carregar os dados limpos
+data = pd.read_csv("Arquivos_Apoio/cleaned_data.csv")
 
-    st.markdown("<h3 style='color:#145089;'>Impacto do acordo da OPEP:</h3>", unsafe_allow_html=True)
-    st.write('''A OPEP (Organização dos Países Exportadores de Petróleo e Aliados) que foi criada em 1960 inicialmente por 5 países que exportam petróleos e ao longo dos anos outros paises foram convidados a participar.
-Ela foi criada com o objetivo de estabelecer uma política comum em relação à produção e à venda de petróleo, de forma a influenciar os preços do petróleo no mercado internacional. Por serem grandes produtores, seus membros são capazes mexer com as cotações, ao aumentar ou cortar a produção de forma coordenada.
-Em 2016, quando os preços do petróleo estavam particularmente baixos, a Opep uniu forças com outros dez grandes produtores de petróleo para criar a Opep+, que tinha como missão reduzir a produção de petróleo e estabilizar o mercado global de energia. A decisão inicial ocorreu em setembro de 2016, durante a reunião em Argel, onde membros da OPEP concordaram em limitar a produção pela primeira vez desde 2008. Em novembro, a OPEP finalizou o acordo, e em dezembro, países não-membros (incluindo Rússia, México e outros) se comprometeram voluntariamente a cortes de produção, formando uma coalizão inédita para controlar o excesso de oferta global de petróleo.
-Essas restrições resultaram em aumentos moderados nos preços do petróleo e ajudaram a recuperar parte da estabilidade do mercado.O acordo se mostrou crucial para amortecer impactos de oscilações no preço do petróleo nos anos seguintes, especialmente durante crises.''')
-    st.image('Imagens/Python/7. Python - Visualização do impacto - Acordo opep.png', caption='Imapacto acordo da OPEP - 2016')
+# Criar o gráfico de importância
+with st.container():
+    fig = go.Figure()
+
+    # Ordenar por importância (exemplo: IPV como proxy)
+    data_sorted = data.mean().sort_values(ascending=False)
+
+    fig.add_trace(
+        go.Bar(
+            x=data_sorted.values,
+            y=data_sorted.index,
+            orientation='h',
+            marker=dict(color='#90ee90'),  # Verde claro
+            name="Feature Importance",
+        )
+    )
+
+    fig.update_layout(
+        title="Feature Importance in Random Forest Model",
+        xaxis_title="Importance",
+        yaxis_title="Feature",
+        yaxis=dict(autorange="reversed"),
+        height=600,
+    )
+
+    # Mostrar o gráfico no Streamlit
+    st.plotly_chart(fig)
+
+# Inputs de indicadores
+with st.container():
+    col0, col1, col2, col3, col4 = st.columns(5)
+    indicator_ian = col0.number_input("IAN", min_value=0.0, max_value=10.0, step=0.1)
+    indicator_ipv = col1.number_input("IPV", min_value=0.0, max_value=10.0, step=0.1)
+    indicator_iaa = col2.number_input("IAA", min_value=0.0, max_value=10.0, step=0.1)
+    indicator_ips = col3.number_input("IPS", min_value=0.0, max_value=10.0, step=0.1)
+    indicator_ipp = col4.number_input("IPP", min_value=0.0, max_value=10.0, step=0.1)
+
+# Criar dataframe de entrada para o modelo
+student_data = pd.DataFrame({
+    'IAA': [indicator_iaa],
+    'IPS': [indicator_ips],
+    'IPP': [indicator_ipp],
+    'IPV': [indicator_ipv],
+    'IAN': [indicator_ian],
+})
+
+# Botão de previsão
+if st.button("⚡️ Predict"):
+    st.dataframe(student_data)
+    # Aqui você adicionaria o scaler e o modelo para realizar a previsão
+    # Exemplo fictício:
+    st.success("Previsão realizada com sucesso!")
     
 elif pagina == "Análise":
     st. image ('imagens/Passos-magicos-icon-cor.png')
