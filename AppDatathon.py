@@ -67,14 +67,9 @@ elif pagina == "Metodologia":
 
 elif pagina == "Dashboard interativo":
     powerbi_url = 'https://app.powerbi.com/reportEmbed?reportId=your_report_id&groupId=your_group_id&autoAuth=true&ctid=your_ctid'
-
-# HTML com iframe para incorporar
-iframe_html = f"""
-    <iframe width="100%" height="600" src="{powerbi_url}" frameborder="0" allowFullScreen="true"></iframe>
-"""
-
-# Exibe o painel do Power BI
-st.components.v1.html(iframe_html, height=700)
+    iframe_html = f'''    <iframe width="100%" height="600" src="{powerbi_url}" frameborder="0" allowFullScreen="true"></iframe>'''
+    
+    st.components.v1.html(iframe_html, height=700)  
 
 elif pagina == "MVP":
     st. image ('imagens/Passos-magicos-icon-cor.png')
