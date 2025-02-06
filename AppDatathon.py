@@ -77,64 +77,64 @@ elif pagina == "Dashboard Interativo":
     st.markdown(iframe_html, unsafe_allow_html=True)
 
 elif pagina == "MVP":
-    st. image ('imagens/Passos-magicos-icon-cor.png')
-    st.markdown("<h3 style='color:##0367B0;'>MVP</h3>", unsafe_allow_html=True)
+    st.image('imagens/Passos-magicos-icon-cor.png')  # Agora somente aparece na página MVP
+    st.markdown("<h3 style='color:#0367B0;'>MVP</h3>", unsafe_allow_html=True)
 
-  # Carregar os dados limpos
-data = pd.read_csv("Arquivos_Apoio/cleaned_data.csv")
+    # Carregar os dados limpos
+    data = pd.read_csv("Arquivos_Apoio/cleaned_data.csv")
 
-# Criar o gráfico de importância
-with st.container():
-    fig = go.Figure()
+    # Criar o gráfico de importância
+    with st.container():
+        fig = go.Figure()
 
-    # Ordenar por importância (exemplo: IPV como proxy)
-    data_sorted = data.mean().sort_values(ascending=False)
+        # Ordenar por importância (exemplo: IPV como proxy)
+        data_sorted = data.mean().sort_values(ascending=False)
 
-    fig.add_trace(
-        go.Bar(
-            x=data_sorted.values,
-            y=data_sorted.index,
-            orientation='h',
-            marker=dict(color='#0367B0'),  # Azul
-            name="Feature Importance",
+        fig.add_trace(
+            go.Bar(
+                x=data_sorted.values,
+                y=data_sorted.index,
+                orientation='h',
+                marker=dict(color='#0367B0'),  # Azul
+                name="Feature Importance",
+            )
         )
-    )
 
-    fig.update_layout(
-        title="Feature Importance in Random Forest Model",
-        xaxis_title="Importance",
-        yaxis_title="Feature",
-        yaxis=dict(autorange="reversed"),
-        height=600,
-    )
+        fig.update_layout(
+            title="Feature Importance in Random Forest Model",
+            xaxis_title="Importance",
+            yaxis_title="Feature",
+            yaxis=dict(autorange="reversed"),
+            height=600,
+        )
 
-    # Mostrar o gráfico no Streamlit
-    st.plotly_chart(fig)
+        # Mostrar o gráfico no Streamlit
+        st.plotly_chart(fig)
 
-# Inputs de indicadores
-with st.container():
-    col0, col1, col2, col3, col4 = st.columns(5)
-    indicator_ian = col0.number_input("IAN", min_value=0.0, max_value=10.0, step=0.1)
-    indicator_ipv = col1.number_input("IPV", min_value=0.0, max_value=10.0, step=0.1)
-    indicator_iaa = col2.number_input("IAA", min_value=0.0, max_value=10.0, step=0.1)
-    indicator_ips = col3.number_input("IPS", min_value=0.0, max_value=10.0, step=0.1)
-    indicator_ipp = col4.number_input("IPP", min_value=0.0, max_value=10.0, step=0.1)
+    # Inputs de indicadores
+    with st.container():
+        col0, col1, col2, col3, col4 = st.columns(5)
+        indicator_ian = col0.number_input("IAN", min_value=0.0, max_value=10.0, step=0.1)
+        indicator_ipv = col1.number_input("IPV", min_value=0.0, max_value=10.0, step=0.1)
+        indicator_iaa = col2.number_input("IAA", min_value=0.0, max_value=10.0, step=0.1)
+        indicator_ips = col3.number_input("IPS", min_value=0.0, max_value=10.0, step=0.1)
+        indicator_ipp = col4.number_input("IPP", min_value=0.0, max_value=10.0, step=0.1)
 
-# Criar dataframe de entrada para o modelo
-student_data = pd.DataFrame({
-    'IAA': [indicator_iaa],
-    'IPS': [indicator_ips],
-    'IPP': [indicator_ipp],
-    'IPV': [indicator_ipv],
-    'IAN': [indicator_ian],
-})
+    # Criar dataframe de entrada para o modelo
+    student_data = pd.DataFrame({
+        'IAA': [indicator_iaa],
+        'IPS': [indicator_ips],
+        'IPP': [indicator_ipp],
+        'IPV': [indicator_ipv],
+        'IAN': [indicator_ian],
+    })
 
-# Botão de previsão
-if st.button("Prever"):
-    st.dataframe(student_data)
-    # Aqui você adicionaria o scaler e o modelo para realizar a previsão
-    # Exemplo fictício:
-    st.success("Previsão realizada com sucesso!")
+    # Botão de previsão
+    if st.button("Prever"):
+        st.dataframe(student_data)
+        # Aqui você adicionaria o scaler e o modelo para realizar a previsão
+        # Exemplo fictício:
+        st.success("Previsão realizada com sucesso!")
     
 elif pagina == "Análise":
     st. image ('imagens/Passos-magicos-icon-cor.png')
