@@ -66,11 +66,15 @@ elif pagina == "Metodologia":
     st. image ('imagens/9.1 Gráfico - Acurácia do modelo.png')
 
 elif pagina == "Dashboard interativo":
-    power_bi_url = "https://app.powerbi.com/view?r=eyJrIjoiNzFkOTBjMGMtYmM3ZC00YzE0LWI1YjYtNjdhNTE0MzE0NWIyIiwidCI6IjExZGJiZmUyLTg5YjgtNDU0OS1iZTEwLWNlYzM2NGU1OTU1MSIsImMiOjR9&pageName=cb3dc97fa06772a0514d"
-    
-    iframe_code = f'<iframe width="80%" height="700px" src="{power_bi_url}" frameborder="0" allowFullScreen="true"></iframe>'
+    powerbi_url = 'https://app.powerbi.com/reportEmbed?reportId=your_report_id&groupId=your_group_id&autoAuth=true&ctid=your_ctid'
 
-    st.components.v1.html(iframe_code, height=600)
+# HTML com iframe para incorporar
+iframe_html = f"""
+    <iframe width="100%" height="600" src="{powerbi_url}" frameborder="0" allowFullScreen="true"></iframe>
+"""
+
+# Exibe o painel do Power BI
+st.components.v1.html(iframe_html, height=700)
 
 elif pagina == "MVP":
     st. image ('imagens/Passos-magicos-icon-cor.png')
