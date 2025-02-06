@@ -95,7 +95,7 @@ with st.container():
             x=data_sorted.values,
             y=data_sorted.index,
             orientation='h',
-            marker=dict(color='#90ee90'),  # Verde claro
+            marker=dict(color='#0367B0'),  # Azul
             name="Feature Importance",
         )
     )
@@ -130,7 +130,7 @@ student_data = pd.DataFrame({
 })
 
 # Botão de previsão
-if st.button("⚡️ Predict"):
+if st.button("Prever"):
     st.dataframe(student_data)
     # Aqui você adicionaria o scaler e o modelo para realizar a previsão
     # Exemplo fictício:
@@ -157,3 +157,5 @@ elif pagina == "Referências":
    
     st.markdown("<h3 style='color:#145089;'>Dados da ONG</h3>", unsafe_allow_html=True)
     st.write('''https://passosmagicos.org.br/''')
+    st.markdown("<h3 style='color:#145089;'>Dados disponibilizados pela FIAP</h3>", unsafe_allow_html=True)
+    st.write('''https://drive.google.com/drive/folders/1Z1j6uzzCOgjB2a6i3Ym1pmJRsasfm7cD''')
