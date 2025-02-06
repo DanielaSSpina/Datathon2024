@@ -13,6 +13,6 @@ Os dados tratados disponibilizados estão no arquivo x;
 
 O script usado no Streamlit pode ser consultado no X;
 
-Desenvolvemos também um dashboard em Power BI, que oferece visualização dinâmica do preço do petróleo e os principais influenciadores do preço, estando disponível dentro do streamlit e no arquivo: [Datathon - Gráfico dinâmico](https://app.powerbi.com/view?r=eyJrIjoiNTUxNjljY2YtOWJjMi00Y2IyLTgxOTItNGRlYzRjMmY3OWM1IiwidCI6IjExZGJiZmUyLTg5YjgtNDU0OS1iZTEwLWNlYzM2NGU1OTU1MSIsImMiOjR9).
+Desenvolvemos também um dashboard em Power BI, que oferece visualização dinâmica do preço do petróleo e os principais influenciadores do preço, estando disponível dentro do streamlit e no arquivo: [Datathon - Gráfico dinâmico](https://app.powerbi.com/view?r=eyJrIjoiNzFkOTBjMGMtYmM3ZC00YzE0LWI1YjYtNjdhNTE0MzE0NWIyIiwidCI6IjExZGJiZmUyLTg5YjgtNDU0OS1iZTEwLWNlYzM2NGU1OTU1MSIsImMiOjR9).
 
 Muito obrigado!
