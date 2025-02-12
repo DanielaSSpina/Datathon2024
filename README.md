@@ -13,7 +13,7 @@ A estrutura do repositório está organizada da seguinte forma:
 1. [Arquivos de apoio](Arquivos_Apoio) - Pasta que reune o arquivo utilizados no trabalho, como:
    [Arquivo bruto](Arquivos_Apoio/PEDE_PASSOS_DATASET_FIAP_COLAB.csv) - bruto utilizado no Collab para organização e correlações inciais;
    
-   [Arquivo tratado](Arquivos_Apoio/PEDE_PASSOS_DATASET_FIAP_ORGANIZADO PBI.xlsx) arquivo tratado e organizado de forma colunada para utilização e análise no dashboard.
+   [Arquivo tratado para PBI](Arquivos_Apoio/PEDE_PASSOS_DATASET_FIAP_ORGANIZADO PBI) arquivo tratado e organizado de forma colunada para utilização e análise no dashboard.
    
    [Arquivo para predicão](Arquivos_Apoio/PEDE_PASSOS_DATASET_FIAP_MVP.xlsx) arquivo tratado, mantendo apenas colunas necessárias para a predição.
 
