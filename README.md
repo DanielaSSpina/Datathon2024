@@ -14,6 +14,8 @@ A estrutura do repositório está organizada da seguinte forma:
 [Arquivo bruto](Arquivos_Apoio/PEDE_PASSOS_DATASET_FIAP_COLAB.csv) - bruto utilizado no Collab para organização e correlações inciais;
 [Arquivo tratado](Arquivos_Apoio/PEDE_PASSOS_DATASET_FIAP_ORGANIZADO PBI.xlsx) arquivo tratado e organizado de forma colunada para utilização e análise no dashboard.
 [Arquivo para predicão](Arquivos_Apoio/PEDE_PASSOS_DATASET_FIAP_MVP.xlsx) arquivo tratado, mantendo apenas colunas necessárias para a predição.
+2. [Imagens de apoio](imagens) - Todas as imagens utilizadas no PBI e streamlit.
+
 
 O script usado no Streamlit pode ser consultado no arquivo [AppDatathon](AppDatathon.py) na página inicial do hub, juntamente com os [requirements](requirements.txt)
 
