@@ -185,7 +185,7 @@ Apesar disso é possível notar que houve um aumento considerável nos alunos av
     Data de nascimento, Data de ingresso na PM, ID do aluno (código único de cada aluno para ter rastreio sem o nome vinculado), raça, instituição de ensino, todas as notas de avaliação utilizadas, INDE e Pedras''')
 
 elif pagina == "Referências":
-     st. image ('Imagens/Passos-magicos-icon-cor.png')
+     st. image ('imagens/Passos-magicos-icon-cor.png')
      st.markdown("<h3 style='color:#0367B0;'>Referências</h3>", unsafe_allow_html=True)
    
      st.markdown("<h3 style='color:#145089;'>Dados da ONG</h3>", unsafe_allow_html=True)
