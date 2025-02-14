@@ -3,19 +3,10 @@ import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
 import h2o
-import os
 from h2o.automl import H2OAutoML
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 
-# Verifica se o ambiente não é o Streamlit Cloud
-if "STREAMLIT_CLOUD" not in os.environ:
-    h2o.init()
-else:
-    st.write("H2O não suportado neste ambiente.")
-
-# Limpar o cache de dados do Streamlit
-st.cache_data.clear()
 
 # Configuração do título do aplicativo
 st.set_page_config(page_title="Projeto de Previsão dados ONG Passos Mágicos", page_icon="📊", layout="wide")
@@ -95,51 +86,44 @@ elif pagina == "MVP":
     st.image('imagens/Passos-magicos-icon-cor.png')  # Agora somente aparece na página MVP
     st.markdown("<h3 style='color:#0367B0;'>MVP</h3>", unsafe_allow_html=True)
 
-    # Carregar dados
-@st.cache
-def load_data():
-    return pd.read_csv('data/dataset.csv')
+# Inicializar o ambiente H2O
+h2o.init()
 
-# Função para treinar o modelo de previsão
+# Função para carregar e processar os dados
+def load_and_process_data(file_path):
+    df = pd.read_excel(file_path, sheet_name="VF")
+
+    # Seleção de colunas relevantes
+    columns = ['IAA', 'IPS', 'IPP', 'IPV', 'IAN', 'PONTO_VIRADA']
+    df = df[[col for col in columns if col in df.columns]]
+
+    # Remover valores inconsistentes e preencher NaN
+    df = df[df['PONTO_VIRADA'] != 'Sem dados']
+    df = df.fillna(0)
+
+    return h2o.H2OFrame(df)
+
+# Treinamento do modelo
 def train_model(data):
-    X = data[['feature1', 'feature2']]  # Substitua com as colunas reais
-    y = data['target']  # Substitua com a coluna alvo real
+    # Definir a coluna de resposta e preditores
+    response = 'PONTO_VIRADA'
+    predictors = ['IAA', 'IPS', 'IPP', 'IPV', 'IAN']
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-    model = LinearRegression()
-    model.fit(X_train, y_train)
+    # Executar o AutoML
+    aml = H2OAutoML(max_runtime_secs=300, seed=42)
+    aml.train(x=predictors, y=response, training_frame=data)
 
-    return model, X_test, y_test
+    return aml.leader
 
-# Função para exibir o gráfico
-def plot_predictions(model, X_test, y_test):
-    y_pred = model.predict(X_test)
-    plt.scatter(y_test, y_pred)
-    plt.xlabel("Real")
-    plt.ylabel("Previsto")
-    plt.title("Previsões vs Real")
-    st.pyplot()
+# Carregar dados
+st.title("MVP de Previsão - Índices")
+uploaded_file = st.file_uploader("Faça upload do dataset (Excel)", type=["xlsx"])
 
-# Função principal do Streamlit
-def main():
-    st.title("MVP de Previsão de Preços")
-    
-    st.write("Carregando os dados...")
-    data = load_data()
-    
-    if st.checkbox('Exibir Dados'):
-        st.write(data.head())
+if uploaded_file:
+    st.success("Dataset carregado com sucesso!")
 
-    st.write("Treinando o modelo...")
-    model, X_test, y_test = train_model(data)
-    
-    if st.checkbox('Mostrar gráfico de previsão'):
-        plot_predictions(model, X_test, y_test)
-
-    st.write("Modelo treinado com sucesso!")
-
-if __name__ == "__main__":
-    main()
+    # Processar os dados
+    data = load_and_process_data(uploaded_file)
 
     # Treinar o modelo
     st.info("Treinando o modelo... Isso pode levar alguns minutos.")
@@ -154,81 +138,46 @@ if __name__ == "__main__":
     indicator_ipv = st.number_input("IPV", min_value=0.0, max_value=10.0, step=0.1)
     indicator_ian = st.number_input("IAN", min_value=0.0, max_value=10.0, step=0.1)
 
-    # Fazer previsão
-    if st.button("Prever"):
-        input_data = h2o.H2OFrame.from_python({
-            'IAA': [indicator_iaa],
-            'IPS': [indicator_ips],
-            'IPP': [indicator_ipp],
-            'IPV': [indicator_ipv],
-            'IAN': [indicator_ian],
+        # Criar o DataFrame para previsão
+        df_novo = pd.DataFrame({
+            'IAA': [IAA],
+            'IEG': [IEG],
+            'IPS': [IPS],
+            'IDA': [IDA],
+            'IPP': [IPP],
+            'IPV': [IPV],
+            'IAN': [IAN],
+            'INDE': [INDE]
         })
+
+        # Converter para H2OFrame
+        df_novo_h2o = h2o.H2OFrame(df_novo)
+
+        # Previsão
+        modelo_carregado = modelo_automl.leader
+        predicao = modelo_carregado.predict(df_novo_h2o)
         
-        prediction = model.predict(input_data)
-        result = prediction.as_data_frame().iloc[0, 0]  # Pega o resultado
+        st.write("Previsão:", predicao)
+    else:
+        st.write("Modelo não treinado.")
 
-        # Exibir o resultado
-        if result == 1:
-            st.success("Resposta: Sim")
-        else:
-            st.error("Resposta: Não")
+# Função principal
+def main():
+    st.title("Previsão usando H2O AutoML")
 
+    # Carregar dados
+    df = carregar_dados()
+    
+    # Treinar modelo
+    modelo_automl = treinar_modelo(df)
+    
+    # Fazer previsão
+    fazer_previsao(modelo_automl)
 
-    # Carregar os dados limpos
-    data = pd.read_csv("Arquivos_Apoio/cleaned_data.csv")
+# Rodar o app
+if __name__ == "__main__":
+    main()
 
-    # Criar o gráfico de importância
-    with st.container():
-        fig = go.Figure()
-
-        # Ordenar por importância (exemplo: IPV como proxy)
-        data_sorted = data.mean().sort_values(ascending=False)
-
-        fig.add_trace(
-            go.Bar(
-                x=data_sorted.values,
-                y=data_sorted.index,
-                orientation='h',
-                marker=dict(color='#0367B0'),  # Azul
-                name="Feature Importance",
-            )
-        )
-
-        fig.update_layout(
-            title="Feature Importance in Random Forest Model",
-            xaxis_title="Importance",
-            yaxis_title="Feature",
-            yaxis=dict(autorange="reversed"),
-            height=600,
-        )
-
-        # Mostrar o gráfico no Streamlit
-        st.plotly_chart(fig)
-
-    # Inputs de indicadores
-    with st.container():
-        col0, col1, col2, col3, col4 = st.columns(5)
-        indicator_ian = col0.number_input("IAN", min_value=0.0, max_value=10.0, step=0.1)
-        indicator_ipv = col1.number_input("IPV", min_value=0.0, max_value=10.0, step=0.1)
-        indicator_iaa = col2.number_input("IAA", min_value=0.0, max_value=10.0, step=0.1)
-        indicator_ips = col3.number_input("IPS", min_value=0.0, max_value=10.0, step=0.1)
-        indicator_ipp = col4.number_input("IPP", min_value=0.0, max_value=10.0, step=0.1)
-
-    # Criar dataframe de entrada para o modelo
-    student_data = pd.DataFrame({
-        'IAA': [indicator_iaa],
-        'IPS': [indicator_ips],
-        'IPP': [indicator_ipp],
-        'IPV': [indicator_ipv],
-        'IAN': [indicator_ian],
-    })
-
-    # Botão de previsão
-    if st.button("Prever"):
-        st.dataframe(student_data)
-        # Aqui você adicionaria o scaler e o modelo para realizar a previsão
-        # Exemplo fictício:
-        st.success("Previsão realizada com sucesso!")
     
 elif pagina == "Análise":
     st. image ('imagens/Passos-magicos-icon-cor.png')
