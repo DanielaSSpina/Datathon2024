@@ -5,6 +5,8 @@ import plotly.graph_objects as go
 import h2o
 from h2o.automl import H2OAutoML
 
+# Inicializa o H2O
+h2o.init()
 
 # Limpar o cache de dados do Streamlit
 st.cache_data.clear()
