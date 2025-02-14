@@ -166,17 +166,17 @@ Aluno de 20 - 22 apenas um aluno tinha mais de 20 anos que ingressou na PM em 20
 Alunos de 11 - 15 anos representam 32% dos alunos atendidos, dos alunos dessa faixa etária 52% estavam matriculados em escola pública e 15% foram avaliados como Quartzo (a menor nota) e somente 8% como Topázio (maior nota).
 Alunos de 16 - 19 anos representam 13% dos alunos atendidos, 20% dos alunos estavam matriculados em escola particular, 4% foram avaliados como Quartzo (menor nota) e 19% deles foram avaliados como Ametista (segunda maior nota).''')
 
-st.markdown("<h3 style='color:#145089;'>Análise alunos 2022:</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color:#145089;'>Análise alunos 2022:</h3>", unsafe_allow_html=True)
     st.write('''''Com base no arquivo disponibilizado segue o panorama de atuação da ONG:
     Não há informação sobre o tipo de instituição de nenhum aluno nesse ano. Somente 10% dos alunos foi avaliado como Topázio (melhor nota). 42% dos alunos estavam no ensino fundamental e 7% dos alunos estavam no ensino médio.
 Alunos de 11 - 15 anos representam 32% dos alunos atendidos, dos alunos dessa faixa etária 9% foram avaliados como Quartzo (a menor nota) e somente 8% como Topázio (maior nota).
 Alunos de 16 - 19 anos representam 16% dos alunos atendidos, 9% foram avaliados como Quartzo (menor nota) e 8% deles foram avaliados como Ametista (segunda maior nota).''''')
 
-st.markdown("<h3 style='color:##0367B0;'>Análise pedras</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color:##0367B0;'>Análise pedras</h3>", unsafe_allow_html=True)
     st.write('''A distribuição de pedras a cada ano não mostra uma enorme evolução, afinal é uma condição variável de diversos fatores, assim como a quantidade de alunos sempre se alterará pelo ingresso e formação dos mesmos, dessa forma não nos mostrando uma linha de evolução constante.
 Apesar disso é possível notar que houve um aumento considerável nos alunos avaliados como topázio em 2022, bem como a diminuição da quantidade de informações não informadas.''')
 
-st.markdown("<h3 style='color:##0367B0;'>Desafios e melhorias identificadas</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color:##0367B0;'>Desafios e melhorias identificadas</h3>", unsafe_allow_html=True)
     st.write('''A ONG com toda certeza sabe o impacto na comunidade, isso é explicado não só pelo aumento constante de alunos ingressantes como também a permanencia dos mesmos a longo prazo, porém como toda grande organização existem desafios e melhorias a serem tratados:''')
     st.markdown("<h3 style='color:#145089;'>Desafios:</h3>", unsafe_allow_html=True)
     st.write('''Como alerta, deixamos a situação da taxa de fecundidade em queda, pois é um movimento crescente assim como a escolha de não ter filhos, o que afeta o público alvo da ONG, uma forma de seguir impactando a comunidade sem perder a intenção valorosa do ensino, seria ir em busca de adultos sem formação para a regularização dos estudos, a profissionalização e o suporte emocional que a essa altura da vida é algo que mutios não buscam e que se faz necessário nesse momento de equalização educacional. ''')
