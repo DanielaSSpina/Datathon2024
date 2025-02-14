@@ -167,10 +167,10 @@ Alunos de 11 - 15 anos representam 32% dos alunos atendidos, dos alunos dessa fa
 Alunos de 16 - 19 anos representam 13% dos alunos atendidos, 20% dos alunos estavam matriculados em escola particular, 4% foram avaliados como Quartzo (menor nota) e 19% deles foram avaliados como Ametista (segunda maior nota).''')
 
 st.markdown("<h3 style='color:#145089;'>Análise alunos 2022:</h3>", unsafe_allow_html=True)
-    st.write('''Com base no arquivo disponibilizado segue o panorama de atuação da ONG:
-    Não há informação sobre o tipo de instituição de nenhum aluno nesse ano. Somente 10% dos alunos foi avaliado como Topázio (melhor nota). 42% dos alunos estavam no ensino fundamental e 7% dos alunos estavam no ensino médio.''')
+    st.write('''''Com base no arquivo disponibilizado segue o panorama de atuação da ONG:
+    Não há informação sobre o tipo de instituição de nenhum aluno nesse ano. Somente 10% dos alunos foi avaliado como Topázio (melhor nota). 42% dos alunos estavam no ensino fundamental e 7% dos alunos estavam no ensino médio.
 Alunos de 11 - 15 anos representam 32% dos alunos atendidos, dos alunos dessa faixa etária 9% foram avaliados como Quartzo (a menor nota) e somente 8% como Topázio (maior nota).
-Alunos de 16 - 19 anos representam 16% dos alunos atendidos, 9% foram avaliados como Quartzo (menor nota) e 8% deles foram avaliados como Ametista (segunda maior nota).''')
+Alunos de 16 - 19 anos representam 16% dos alunos atendidos, 9% foram avaliados como Quartzo (menor nota) e 8% deles foram avaliados como Ametista (segunda maior nota).''''')
 
 st.markdown("<h3 style='color:##0367B0;'>Análise pedras</h3>", unsafe_allow_html=True)
     st.write('''A distribuição de pedras a cada ano não mostra uma enorme evolução, afinal é uma condição variável de diversos fatores, assim como a quantidade de alunos sempre se alterará pelo ingresso e formação dos mesmos, dessa forma não nos mostrando uma linha de evolução constante.
