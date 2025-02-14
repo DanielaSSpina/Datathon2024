@@ -145,31 +145,44 @@ elif pagina == "MVP":
             st.write(f"Categoria: {categoria}")
     else:
         st.error("As colunas necessárias não estão presentes no DataFrame!")
+
 elif pagina == "Análise":
     st. image ('imagens/Passos-magicos-icon-cor.png')
     st.markdown("<h3 style='color:##0367B0;'>Análise PM</h3>", unsafe_allow_html=True)
-
     st.markdown("<h3 style='color:#145089;>Dados da ONG:</h3>", unsafe_allow_html=True)
     st.write('''A ONG disponibiliza em seu site dados desde 2016, a partir desses dados foi possível entender que a onde está em uma constante crescente, tanto em quantidade de pessoas atendidas quanto em profissionais contratados, a tendência para os próximos três anos que é a ONG tenha crescimento, principalmente em crianças atendidas e professores contratados, já que são variáveis totalmente relacionadas. 
 Porém para o futuro é bom ter como alerta a taxa de fecundidade que vem diminuindo desde 2017, o que futuramente pode causar um impacto, uma vez que a quantidade de nascidos vivos em Embu-guaçu também acompanha esse declínio.''')
 
     st.markdown("<h3 style='color:#145089;'>Análise alunos 2020:</h3>", unsafe_allow_html=True)
     st.write('''Com base no arquivo disponibilizado segue o panorama de atuação da ONG:
-    44% dos alunos deste ano estavam matriculados em escola pública. Somente 7% dos alunos foi avaliado como Topázio (melhor nota). 37% dos alunos estavam no ensino fundamental e 9% dos alunos estavam no ensino médio.
-Alunos de 6 - 10 anos representam 16% dos alunos atendidos, 51% dos alunos foram avaliados como Ametista (segunda maior nota) e 25% receberam avaliação Topázio (maior nota).
-Alunos de 11 - 15 anos representam 28% dos alunos atendidos, dos alunos dessa faixa etária 81% estavam matriculados em escola pública e 17% foram avaliados como Quartzo (a menor nota) e somente 8% como Topázio (maior nota). A maior parte desses alunos fazem parte das fases 2 e 3 que são alunos do 5º ao 8º ano.
+    44% dos alunos deste ano estavam matriculados em escola pública. Somente 7% dos alunos foi avaliado como Topázio (melhor nota). 6% dos alunos estavam em alfabetização, 37% dos alunos estavam no ensino fundamental e 9% dos alunos estavam no ensino médio e 2% em nível superior.
+Alunos de 11 - 15 anos representam 28% dos alunos atendidos, dos alunos dessa faixa etária 81% estavam matriculados em escola pública e 17% foram avaliados como Quartzo (a menor nota) e somente 8% como Topázio (maior nota). 
 Alunos de 16 - 19 anos representam 9% dos alunos atendidos, 65% dos alunos estavam matriculados em escola pública, 35% foram avaliados como Quartzo (menor nota). 
 Aluno de 20 - 22 apenas um aluno tinha mais de 20 anos que ingressou na PM em 2016 e foi avaliado como Ágata.''')
     
     st.markdown("<h3 style='color:#145089;'>Análise alunos 2021:</h3>", unsafe_allow_html=True)
     st.write('''Com base no arquivo disponibilizado segue o panorama de atuação da ONG:
-    44% dos alunos deste ano estavam matriculados em escola pública. Somente 7% dos alunos foi avaliado como Topázio (melhor nota). 37% dos alunos estavam no ensino fundamental e 9% dos alunos estavam no ensino médio.
-Alunos de 6 - 10 anos representam 16% dos alunos atendidos, 51% dos alunos foram avaliados como Ametista (segunda maior nota) e 25% receberam avaliação Topázio (maior nota).
-Alunos de 11 - 15 anos representam 28% dos alunos atendidos, dos alunos dessa faixa etária 81% estavam matriculados em escola pública e 17% foram avaliados como Quartzo (a menor nota) e somente 8% como Topázio (maior nota). A maior parte desses alunos fazem parte das fases 2 e 3 que são alunos do 5º ao 8º ano.
-Alunos de 16 - 19 anos representam 9% dos alunos atendidos, 65% dos alunos estavam matriculados em escola pública, 35% foram avaliados como Quartzo (menor nota). 
-Aluno de 20 - 22 apenas um aluno tinha mais de 20 anos que ingressou na PM em 2016 e foi avaliado como Ágata.''')
+    41% dos alunos deste ano estavam matriculados em escola pública. Somente 7% dos alunos foi avaliado como Topázio (melhor nota). 35% dos alunos estavam no ensino fundamental e 7% dos alunos estavam no ensino médio.
+Alunos de 11 - 15 anos representam 32% dos alunos atendidos, dos alunos dessa faixa etária 52% estavam matriculados em escola pública e 15% foram avaliados como Quartzo (a menor nota) e somente 8% como Topázio (maior nota).
+Alunos de 16 - 19 anos representam 13% dos alunos atendidos, 20% dos alunos estavam matriculados em escola particular, 4% foram avaliados como Quartzo (menor nota) e 19% deles foram avaliados como Ametista (segunda maior nota).''')
 
-    
+st.markdown("<h3 style='color:#145089;'>Análise alunos 2022:</h3>", unsafe_allow_html=True)
+    st.write('''Com base no arquivo disponibilizado segue o panorama de atuação da ONG:
+    Não há informação sobre o tipo de instituição de nenhum aluno nesse ano. Somente 10% dos alunos foi avaliado como Topázio (melhor nota). 42% dos alunos estavam no ensino fundamental e 7% dos alunos estavam no ensino médio.
+Alunos de 11 - 15 anos representam 32% dos alunos atendidos, dos alunos dessa faixa etária 9% foram avaliados como Quartzo (a menor nota) e somente 8% como Topázio (maior nota).
+Alunos de 16 - 19 anos representam 16% dos alunos atendidos, 9% foram avaliados como Quartzo (menor nota) e 8% deles foram avaliados como Ametista (segunda maior nota).''')
+
+st.markdown("<h3 style='color:##0367B0;'>Análise pedras</h3>", unsafe_allow_html=True)
+    st.write('''A distribuição de pedras a cada ano não mostra uma enorme evolução, afinal é uma condição variável de diversos fatores, assim como a quantidade de alunos sempre se alterará pelo ingresso e formação dos mesmos, dessa forma não nos mostrando uma linha de evolução constante.
+Apesar disso é possível notar que houve um aumento considerável nos alunos avaliados como topázio em 2022, bem como a diminuição da quantidade de informações não informadas.''')
+
+st.markdown("<h3 style='color:##0367B0;'>Desafios e melhorias identificadas</h3>", unsafe_allow_html=True)
+    st.write('''A ONG com toda certeza sabe o impacto na comunidade, isso é explicado não só pelo aumento constante de alunos ingressantes como também a permanencia dos mesmos a longo prazo, porém como toda grande organização existem desafios e melhorias a serem tratados:''')
+    st.markdown("<h3 style='color:#145089;'>Desafios:</h3>", unsafe_allow_html=True)
+    st.write('''Como alerta, deixamos a situação da taxa de fecundidade em queda, pois é um movimento crescente assim como a escolha de não ter filhos, o que afeta o público alvo da ONG, uma forma de seguir impactando a comunidade sem perder a intenção valorosa do ensino, seria ir em busca de adultos sem formação para a regularização dos estudos, a profissionalização e o suporte emocional que a essa altura da vida é algo que mutios não buscam e que se faz necessário nesse momento de equalização educacional. ''')
+    st.markdown("<h3 style='color:#145089;'>Melhorias:</h3>", unsafe_allow_html=True)
+    st.write('''Percebemos que a base de dados disponível é bem falha, tendo informações faltantes de um ano para o outro e informações novas a cada ano, para uma análise a longo prazo isso é algo extremamente prejudicial para tomadas de decisões, pois com as informações irregulares disponibilizadas pode prejudicar a predição e acompanhamento de tendências do negócio. Portanto fazer um mapeamento de informações primordiais e mantê-las como obrigatórias no momento do preenchimento dos relatórios se faz fundamental, deixaremos abaixo algumas informações que se mostram primordiais para nós avaliadores:
+    Data de nascimento, Data de ingresso na PM, ID do aluno (código único de cada aluno para ter rastreio sem o nome vinculado), raça, instituição de ensino, todas as notas de avaliação utilizadas, INDE e Pedras''')
 
 elif pagina == "Referências":
     st. image ('Imagens/Passos-magicos-icon-cor.png')
@@ -183,3 +196,17 @@ elif pagina == "Referências":
     st.write('''https://spdemografico.seade.gov.br/integra/?analise=a-fecundidade-no-estado-de-sao-paulo-e-em-suas-regioes-administrativas-2000-a-2023&utm_source=chatgpt.com''')
     st.markdown("<h3 style='color:#145089;'>Dados nascimento em Embu-guaçu</h3>", unsafe_allow_html=True)
     st.write('''https://primeirainfanciaprimeiro.fmcsv.org.br/municipios/embu-guacu-sp/''')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
