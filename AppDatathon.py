@@ -28,8 +28,8 @@ if pagina == "Introdução":
 
     st.markdown("<h3 style='color:#0367B0;'>Ferramentas utilizadas</h3>", unsafe_allow_html=True)
     st.write('Para a realização deste trabalho, foi utilizado as seguintes ferramentas:')
-    st.write('Python: utilizado para toda a tratativa inicial das bases como organização das colunas, remoção de espaços e duplicidades e valores nulos, assim como para a realização da previsão dos preços do petróleo por meio do modelo de machine learning PROPHET.')
-    st.write('PowerBI: utilizado para a criação de um dashboard interativo compilando as informações disponíveis do preço do petróleo, previsão e acontecimentos que influenciam na explicação da variação do preço.')
+    st.write('Python: utilizado para toda a tratativa inicial das bases como organização das colunas, remoção de espaços e duplicidades e valores nulos, assim como para a realização da previsão.')
+    st.write('PowerBI: utilizado para a criação de um dashboard interativo compilando as informações disponíveis no site da ONG para análise interativa.')
     st.write('Streamlit: utilizado para desenvolvimento do MVP (Minimum Viable Product, ou Produto Mínimo Viável) e disponibilização das etapas e informações do projeto.')
 
 elif pagina == "Metodologia":
