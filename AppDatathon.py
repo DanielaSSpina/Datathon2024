@@ -81,6 +81,78 @@ elif pagina == "MVP":
     st.image('imagens/Passos-magicos-icon-cor.png')  # Agora somente aparece na página MVP
     st.markdown("<h3 style='color:#0367B0;'>MVP</h3>", unsafe_allow_html=True)
 
+# Inicializar o ambiente H2O
+h2o.init()
+
+# Função para carregar e processar os dados
+def load_and_process_data(file_path):
+    df = pd.read_excel(file_path, sheet_name="VF")
+
+    # Seleção de colunas relevantes
+    columns = ['IAA', 'IPS', 'IPP', 'IPV', 'IAN', 'PONTO_VIRADA']
+    df = df[[col for col in columns if col in df.columns]]
+
+    # Remover valores inconsistentes e preencher NaN
+    df = df[df['PONTO_VIRADA'] != 'Sem dados']
+    df = df.fillna(0)
+
+    return h2o.H2OFrame(df)
+
+# Treinamento do modelo
+def train_model(data):
+    # Definir a coluna de resposta e preditores
+    response = 'PONTO_VIRADA'
+    predictors = ['IAA', 'IPS', 'IPP', 'IPV', 'IAN']
+
+    # Executar o AutoML
+    aml = H2OAutoML(max_runtime_secs=300, seed=42)
+    aml.train(x=predictors, y=response, training_frame=data)
+
+    return aml.leader
+
+# Carregar dados
+st.title("MVP de Previsão - Índices")
+uploaded_file = st.file_uploader("Faça upload do dataset (Excel)", type=["xlsx"])
+
+if uploaded_file:
+    st.success("Dataset carregado com sucesso!")
+
+    # Processar os dados
+    data = load_and_process_data(uploaded_file)
+
+    # Treinar o modelo
+    st.info("Treinando o modelo... Isso pode levar alguns minutos.")
+    model = train_model(data)
+    st.success("Modelo treinado com sucesso!")
+
+    # Inputs do usuário
+    st.header("Insira os índices para prever")
+    indicator_iaa = st.number_input("IAA", min_value=0.0, max_value=10.0, step=0.1)
+    indicator_ips = st.number_input("IPS", min_value=0.0, max_value=10.0, step=0.1)
+    indicator_ipp = st.number_input("IPP", min_value=0.0, max_value=10.0, step=0.1)
+    indicator_ipv = st.number_input("IPV", min_value=0.0, max_value=10.0, step=0.1)
+    indicator_ian = st.number_input("IAN", min_value=0.0, max_value=10.0, step=0.1)
+
+    # Fazer previsão
+    if st.button("Prever"):
+        input_data = h2o.H2OFrame.from_python({
+            'IAA': [indicator_iaa],
+            'IPS': [indicator_ips],
+            'IPP': [indicator_ipp],
+            'IPV': [indicator_ipv],
+            'IAN': [indicator_ian],
+        })
+        
+        prediction = model.predict(input_data)
+        result = prediction.as_data_frame().iloc[0, 0]  # Pega o resultado
+
+        # Exibir o resultado
+        if result == 1:
+            st.success("Resposta: Sim")
+        else:
+            st.error("Resposta: Não")
+
+
     # Carregar os dados limpos
     data = pd.read_csv("Arquivos_Apoio/cleaned_data.csv")
 
@@ -147,7 +219,19 @@ Porém para o futuro é bom ter como alerta a taxa de fecundidade que vem diminu
 
     st.markdown("<h3 style='color:#145089;'>Análise alunos 2020:</h3>", unsafe_allow_html=True)
     st.write('''Com base no arquivo disponibilizado segue o panorama de atuação da ONG:
-Alunos de 11 - 15 anos representam 28% dos alunos atendidos, dos alunos dessa faixa etária 80% estavam matriculados em escola pública e 48% foram avaliados como Ametista. A maior parte desses alunos fazem parte das fases 2 e 3.''')
+    44% dos alunos deste ano estavam matriculados em escola pública. Somente 7% dos alunos foi avaliado como Topázio (melhor nota). 37% dos alunos estavam no ensino fundamental e 9% dos alunos estavam no ensino médio.
+Alunos de 6 - 10 anos representam 16% dos alunos atendidos, 51% dos alunos foram avaliados como Ametista (segunda maior nota) e 25% receberam avaliação Topázio (maior nota).
+Alunos de 11 - 15 anos representam 28% dos alunos atendidos, dos alunos dessa faixa etária 81% estavam matriculados em escola pública e 17% foram avaliados como Quartzo (a menor nota) e somente 8% como Topázio (maior nota). A maior parte desses alunos fazem parte das fases 2 e 3 que são alunos do 5º ao 8º ano.
+Alunos de 16 - 19 anos representam 9% dos alunos atendidos, 65% dos alunos estavam matriculados em escola pública, 35% foram avaliados como Quartzo (menor nota). 
+Aluno de 20 - 22 apenas um aluno tinha mais de 20 anos que ingressou na PM em 2016 e foi avaliado como Ágata.''')
+    
+    st.markdown("<h3 style='color:#145089;'>Análise alunos 2021:</h3>", unsafe_allow_html=True)
+    st.write('''Com base no arquivo disponibilizado segue o panorama de atuação da ONG:
+    44% dos alunos deste ano estavam matriculados em escola pública. Somente 7% dos alunos foi avaliado como Topázio (melhor nota). 37% dos alunos estavam no ensino fundamental e 9% dos alunos estavam no ensino médio.
+Alunos de 6 - 10 anos representam 16% dos alunos atendidos, 51% dos alunos foram avaliados como Ametista (segunda maior nota) e 25% receberam avaliação Topázio (maior nota).
+Alunos de 11 - 15 anos representam 28% dos alunos atendidos, dos alunos dessa faixa etária 81% estavam matriculados em escola pública e 17% foram avaliados como Quartzo (a menor nota) e somente 8% como Topázio (maior nota). A maior parte desses alunos fazem parte das fases 2 e 3 que são alunos do 5º ao 8º ano.
+Alunos de 16 - 19 anos representam 9% dos alunos atendidos, 65% dos alunos estavam matriculados em escola pública, 35% foram avaliados como Quartzo (menor nota). 
+Aluno de 20 - 22 apenas um aluno tinha mais de 20 anos que ingressou na PM em 2016 e foi avaliado como Ágata.''')
 
     
 
