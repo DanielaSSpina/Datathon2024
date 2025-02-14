@@ -1,4 +1,4 @@
-import streamlit as st
+import streamlit as st 
 import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
@@ -6,70 +6,71 @@ import h2o
 from h2o.automl import H2OAutoML
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error  # Importação do erro quadrático médio
 
-
-# Configuração do título do aplicativo
+# Configuração da página (deve ser o primeiro comando relacionado ao Streamlit)
 st.set_page_config(page_title="Projeto de Previsão dados ONG Passos Mágicos", page_icon="📊", layout="wide")
 
+# Configuração do título do aplicativo
 st.markdown("<p style='font-size:40px; color:#B40C40;'>Datathon | Fiap</p>", unsafe_allow_html=True)
 
 # Criando um menu de navegação com `selectbox` ou `radio`
-pagina = st.sidebar.radio("Escolha a Página", ["Introdução", "Metodologia","Dashboard Interativo", "MVP", "Análise", "Referências"])
+pagina = st.sidebar.radio("Escolha a Página", ["Introdução", "Metodologia", "Dashboard Interativo", "MVP", "Análise", "Referências"])
 
 # Conteúdo de cada página
 if pagina == "Introdução":
-    st. image ('imagens/Passos-magicos-icon-cor.png')
+    st.image('imagens/Passos-magicos-icon-cor.png')
     st.markdown("<h3 style='color:#0367B0;'>Introdução</h3>", unsafe_allow_html=True)
-    st.write('''Este trabalho tem como objetivo trazer uma proposta preditiva para mostrar o impacto das ações da ONG Passos Mágicos sobre a comunidade que atendem
-    Os impactos a serem analisados terão como base o perfil dos estudantes atendidos,  informações educacionanais, informações socioeconômicas e as respostas da pesquisa realizada pela ONG.''')
+    st.write('''Este trabalho tem como objetivo trazer uma proposta preditiva para mostrar o impacto das ações da ONG Passos Mágicos sobre a comunidade que atendem.
+    Os impactos a serem analisados terão como base o perfil dos estudantes atendidos, informações educacionais, informações socioeconômicas e as respostas da pesquisa realizada pela ONG.''')
 
     st.markdown("<h3 style='color:#0367B0;'>Ferramentas utilizadas</h3>", unsafe_allow_html=True)
     st.write('Para a realização deste trabalho, foi utilizado as seguintes ferramentas:')
-    st.write('Python: utilizado para toda a tratativa inicial das bases como organização das colunas, remoção de espaços e duplicidades e valores nulo, assim como para a realização da previsão dos preços do petróleo por meio do modelo de machine learning PROPHET.')
+    st.write('Python: utilizado para toda a tratativa inicial das bases como organização das colunas, remoção de espaços e duplicidades e valores nulos, assim como para a realização da previsão dos preços do petróleo por meio do modelo de machine learning PROPHET.')
     st.write('PowerBI: utilizado para a criação de um dashboard interativo compilando as informações disponíveis do preço do petróleo, previsão e acontecimentos que influenciam na explicação da variação do preço.')
     st.write('Streamlit: utilizado para desenvolvimento do MVP (Minimum Viable Product, ou Produto Mínimo Viável) e disponibilização das etapas e informações do projeto.')
 
 elif pagina == "Metodologia":
-    st. image ('imagens/Passos-magicos-icon-cor.png')
+    st.image('imagens/Passos-magicos-icon-cor.png')
     st.markdown("<h3 style='color:#0367B0;'>Metodologia</h3>", unsafe_allow_html=True)
     st.markdown("<h3 style='color:#145089;'>Origem e análise dos dados</h3>", unsafe_allow_html=True)
     st.write('''Os dados utilizados nesta análise foram extraídos do Drive disponibilizado pela FIAP. 
-    Após a extração, os dados foram salvos em um arquivo excel, passado por um tratamento inicial onde foi ajustado as acentuações em algumas palavras e importados no python para demais tratamenots necessários conforme abaixo:''')
-    st. image ('imagens/1.1 Leitura e tratamento de Dados.png')
-    st. image ('imagens/1.2 Leitura e tratamento de Dados.png')
+    Após a extração, os dados foram salvos em um arquivo excel, passaram por um tratamento inicial onde foi ajustado as acentuações em algumas palavras e importados no python para demais tratamentos necessários conforme abaixo:''')
+    st.image('imagens/1.1 Leitura e tratamento de Dados.png')
+    st.image('imagens/1.2 Leitura e tratamento de Dados.png')
 
     st.markdown("<h3 style='color:#145089;'>Análises iniciais</h3>", unsafe_allow_html=True)
-
-  
     st.write('Análise de desempenho escolar')
-    st. image ('imagens/2.1 Análise desempenho escolar.png')
-    st. image ('imagens/2.2 Análise desempenho escolar - defasagem.png')
+    st.image('imagens/2.1 Análise desempenho escolar.png')
+    st.image('imagens/2.2 Análise desempenho escolar - defasagem.png')
     st.write('Correlações')
-    st. image ('imagens/3.1 Visualização de Dados - Notas vs frequência.png')
-    st. image ('imagens/3.1 Gráfico - Distribuição das notas vs Frequência.png')
-    st. image ('imagens/3.2 Visualização de Dados - Idade vs frequência.png')
-    st. image ('imagens/3.2 Gráfico - Distribuição de idades vs Frequência.png')
-    st. image ('imagens/3.3 Gráfico - Média de notas vs Faixa etária.png')
-    st. image ('imagens/3.4 Gráfico - Notas vs Faixa etária.png')
-    st. image ('imagens/3.5 Gráfico - Nota vs Aprovação.png')
-    st. image ('imagens/3.6 Gráfico - Desempenho vs tipo de escola.png')
-    st. image ('imagens/3.7 Gráfico - Desempenho vs Idade.png')
-    st. image ('imagens/3.8 Visualização de Dados - Faltas vs Reprovação.png')
-    st. image ('imagens/3.8 Gráfico - Idade vs reprovação.png')
-    st. image ('imagens/3.9 Visualização de Dados - Previsão de comportamento - Feedbacks.png')
-    st. image ('imagens/3.9 Gráfico - Previsão de comportamento - Feedbacks.png')
-    st. image ('imagens/3.9 Visualização de Dados - Previsão de comportamento.png')
-    st. image ('imagens/3.9 Gráfico - Previsão.png')
-    st. image ('imagens/3.9 Visualização de Dados - Previsão de comportamento - Correlação e treinamento.png')
-    st. image ('imagens/3.9 Gráfico - Previsão de comportamento - Correlação e treinamento.png')
-    st. image ('imagens/4.1 Gráfico - Pedra vs Idade.png')
-    st. image ('imagens/5.1 Gráfico - Qtd Feedbacks vs Tipo de comportamento.png')
-    st. image ('imagens/6.1 Visualização de Dados - Feedback vs tempo de estudo.png')
-    st. image ('imagens/6.1 Gráfico - Feedback vs tempo de estudo.png')
-    st. image ('imagens/7.1 Gráfico - Matriz de confusão.png')
-    st. image ('imagens/8.1 Gráfico - Previsão vs Feedback.png')
-    st. image ('imagens/9.1 Visualização de Dados - Acurácia do modelo.png')
-    st. image ('imagens/9.1 Gráfico - Acurácia do modelo.png')
+    st.image('imagens/3.1 Visualização de Dados - Notas vs frequência.png')
+    st.image('imagens/3.1 Gráfico - Distribuição das notas vs Frequência.png')
+    st.image('imagens/3.2 Visualização de Dados - Idade vs frequência.png')
+    st.image('imagens/3.2 Gráfico - Distribuição de idades vs Frequência.png')
+    st.image('imagens/3.3 Gráfico - Média de notas vs Faixa etária.png')
+    st.image('imagens/3.4 Gráfico - Notas vs Faixa etária.png')
+    st.image('imagens/3.5 Gráfico - Nota vs Aprovação.png')
+    st.image('imagens/3.6 Gráfico - Desempenho vs tipo de escola.png')
+    st.image('imagens/3.7 Gráfico - Desempenho vs Idade.png')
+    st.image('imagens/3.8 Visualização de Dados - Faltas vs Reprovação.png')
+    st.image('imagens/3.8 Gráfico - Idade vs reprovação.png')
+    st.image('imagens/3.9 Visualização de Dados - Previsão de comportamento - Feedbacks.png')
+    st.image('imagens/3.9 Gráfico - Previsão de comportamento - Feedbacks.png')
+    st.image('imagens/3.9 Visualização de Dados - Previsão de comportamento.png')
+    st.image('imagens/3.9 Gráfico - Previsão.png')
+    st.image('imagens/3.9 Visualização de Dados - Previsão de comportamento - Correlação e treinamento.png')
+    st.image('imagens/3.9 Gráfico - Previsão de comportamento - Correlação e treinamento.png')
+    st.image('imagens/4.1 Gráfico - Pedra vs Idade.png')
+    st.image('imagens/5.1 Gráfico - Qtd Feedbacks vs Tipo de comportamento.png')
+    st.image('imagens/6.1 Visualização de Dados - Feedback vs tempo de estudo.png')
+    st.image('imagens/6.1 Gráfico - Feedback vs tempo de estudo.png')
+    st.image('imagens/7.1 Gráfico - Matriz de confusão.png')
+    st.image('imagens/8.1 Gráfico - Previsão vs Feedback.png')
+    st.image('imagens/9.1 Visualização de Dados - Acurácia do modelo.png')
+    st.image('imagens/9.1 Gráfico - Acurácia do modelo.png')
 
 elif pagina == "Dashboard Interativo":
     # URL do painel do Power BI
@@ -81,139 +82,75 @@ elif pagina == "Dashboard Interativo":
     # Exibe o painel do Power BI usando markdown com HTML
     st.markdown(iframe_html, unsafe_allow_html=True)
 
-
 elif pagina == "MVP":
-    st.image('imagens/Passos-magicos-icon-cor.png')  # Agora somente aparece na página MVP
-    st.markdown("<h3 style='color:#0367B0;'>MVP</h3>", unsafe_allow_html=True)
+    # Caixas para o usuário inserir os valores das variáveis
+    st.write("Insira os valores das variáveis:")
 
-# Inicializar o ambiente H2O
-h2o.init()
+    IDA = st.number_input("IDA", min_value=0.0, max_value=10.0, step=0.1)
+    IPV = st.number_input("IPV", min_value=0.0, max_value=10.0, step=0.1)
+    IAA = st.number_input("IAA", min_value=0.0, max_value=10.0, step=0.1)
+    IEG = st.number_input("IEG", min_value=0.0, max_value=10.0, step=0.1)
+    IPS = st.number_input("IPS", min_value=0.0, max_value=10.0, step=0.1)
+    IPP = st.number_input("IPP", min_value=0.0, max_value=10.0, step=0.1)
+    IAN = st.number_input("IAN", min_value=0.0, max_value=10.0, step=0.1)
 
-# Função para carregar e processar os dados
-def load_and_process_data(file_path):
-    df = pd.read_excel(file_path, sheet_name="VF")
+    # Dados de exemplo (para treino do modelo)
+    example_data = {
+        "IDA": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        "IPV": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        "IAA": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        "IEG": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        "IPS": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        "IPP": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        "IAN": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        "target": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  # Variável alvo
+    }
 
-    # Seleção de colunas relevantes
-    columns = ['IAA', 'IPS', 'IPP', 'IPV', 'IAN', 'PONTO_VIRADA']
-    df = df[[col for col in columns if col in df.columns]]
+    # Criar DataFrame
+    data = pd.DataFrame(example_data)
 
-    # Remover valores inconsistentes e preencher NaN
-    df = df[df['PONTO_VIRADA'] != 'Sem dados']
-    df = df.fillna(0)
+    # Verificar se as colunas necessárias estão presentes
+    features = ["IDA", "IPV", "IAA", "IEG", "IPS", "IPP", "IAN"]
+    if all(feature in data.columns for feature in features):
+        # Separar as features e a variável alvo
+        X = data[features]
+        y = data["target"]
 
-    return h2o.H2OFrame(df)
+        # Dividir os dados em treino e teste
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Treinamento do modelo
-def train_model(data):
-    # Definir a coluna de resposta e preditores
-    response = 'PONTO_VIRADA'
-    predictors = ['IAA', 'IPS', 'IPP', 'IPV', 'IAN']
+        # Treinar o modelo
+        model = RandomForestRegressor(random_state=42)
+        model.fit(X_train, y_train)
 
-    # Executar o AutoML
-    aml = H2OAutoML(max_runtime_secs=300, seed=42)
-    aml.train(x=predictors, y=response, training_frame=data)
+        # Predição com base nos valores fornecidos pelo usuário
+        if st.button("Fazer Previsão"):
+            user_input = np.array([[IDA, IPV, IAA, IEG, IPS, IPP, IAN]])
+            prediction = model.predict(user_input)[0]
 
-    return aml.leader
+            # Classificar a predição
+            if 2.405 <= prediction <= 5.506:
+                categoria = "Quartzo"
+            elif 5.506 < prediction <= 6.868:
+                categoria = "Ágata"
+            elif 6.868 < prediction <= 8.230:
+                categoria = "Ametista"
+            elif 8.230 < prediction <= 9.294:
+                categoria = "Topázio"
+            else:
+                categoria = "Fora dos intervalos"
 
-# Carregar dados
-st.title("MVP de Previsão - Índices")
-uploaded_file = st.file_uploader("Faça upload do dataset (Excel)", type=["xlsx"])
-
-if uploaded_file:
-    st.success("Dataset carregado com sucesso!")
-
-    # Processar os dados
-    data = load_and_process_data(uploaded_file)
-
-    # Treinar o modelo
-    st.info("Treinando o modelo... Isso pode levar alguns minutos.")
-    model = train_model(data)
-    st.success("Modelo treinado com sucesso!")
-
-    # Inputs do usuário
-    st.header("Insira os índices para prever")
-    indicator_iaa = st.number_input("IAA", min_value=0.0, max_value=10.0, step=0.1)
-    indicator_ips = st.number_input("IPS", min_value=0.0, max_value=10.0, step=0.1)
-    indicator_ipp = st.number_input("IPP", min_value=0.0, max_value=10.0, step=0.1)
-    indicator_ipv = st.number_input("IPV", min_value=0.0, max_value=10.0, step=0.1)
-    indicator_ian = st.number_input("IAN", min_value=0.0, max_value=10.0, step=0.1)
-
-        # Criar o DataFrame para previsão
-        df_novo = pd.DataFrame({
-            'IAA': [IAA],
-            'IEG': [IEG],
-            'IPS': [IPS],
-            'IDA': [IDA],
-            'IPP': [IPP],
-            'IPV': [IPV],
-            'IAN': [IAN],
-            'INDE': [INDE]
-        })
-
-        # Converter para H2OFrame
-        df_novo_h2o = h2o.H2OFrame(df_novo)
-
-        # Previsão
-        modelo_carregado = modelo_automl.leader
-        predicao = modelo_carregado.predict(df_novo_h2o)
-        
-        st.write("Previsão:", predicao)
+            # Exibir os resultados
+            st.write(f"Predição: {prediction:.2f}")
+            st.write(f"Categoria: {categoria}")
     else:
-        st.write("Modelo não treinado.")
-
-# Função principal
-def main():
-    st.title("Previsão usando H2O AutoML")
-
-    # Carregar dados
-    df = carregar_dados()
-    
-    # Treinar modelo
-    modelo_automl = treinar_modelo(df)
-    
-    # Fazer previsão
-    fazer_previsao(modelo_automl)
-
-# Rodar o app
-if __name__ == "__main__":
-    main()
-
-    
-elif pagina == "Análise":
-    st. image ('imagens/Passos-magicos-icon-cor.png')
-    st.markdown("<h3 style='color:##0367B0;'>Análise PM</h3>", unsafe_allow_html=True)
-
-    st.markdown("<h3 style='color:#145089;>Dados da ONG:</h3>", unsafe_allow_html=True)
-    st.write('''A ONG disponibiliza em seu site dados desde 2016, a partir desses dados foi possível entender que a onde está em uma constante crescente, tanto em quantidade de pessoas atendidas quanto em profissionais contratados, a tendência para os próximos três anos que é a ONG tenha crescimento, principalmente em crianças atendidas e professores contratados, já que são variáveis totalmente relacionadas. 
-Porém para o futuro é bom ter como alerta a taxa de fecundidade que vem diminuindo desde 2017, o que futuramente pode causar um impacto, uma vez que a quantidade de nascidos vivos em Embu-guaçu também acompanha esse declínio.''')
-
-    st.markdown("<h3 style='color:#145089;'>Análise alunos 2020:</h3>", unsafe_allow_html=True)
-    st.write('''Com base no arquivo disponibilizado segue o panorama de atuação da ONG:
-    44% dos alunos deste ano estavam matriculados em escola pública. Somente 7% dos alunos foi avaliado como Topázio (melhor nota). 37% dos alunos estavam no ensino fundamental e 9% dos alunos estavam no ensino médio.
-Alunos de 6 - 10 anos representam 16% dos alunos atendidos, 51% dos alunos foram avaliados como Ametista (segunda maior nota) e 25% receberam avaliação Topázio (maior nota).
-Alunos de 11 - 15 anos representam 28% dos alunos atendidos, dos alunos dessa faixa etária 81% estavam matriculados em escola pública e 17% foram avaliados como Quartzo (a menor nota) e somente 8% como Topázio (maior nota). A maior parte desses alunos fazem parte das fases 2 e 3 que são alunos do 5º ao 8º ano.
-Alunos de 16 - 19 anos representam 9% dos alunos atendidos, 65% dos alunos estavam matriculados em escola pública, 35% foram avaliados como Quartzo (menor nota). 
-Aluno de 20 - 22 apenas um aluno tinha mais de 20 anos que ingressou na PM em 2016 e foi avaliado como Ágata.''')
-    
-    st.markdown("<h3 style='color:#145089;'>Análise alunos 2021:</h3>", unsafe_allow_html=True)
-    st.write('''Com base no arquivo disponibilizado segue o panorama de atuação da ONG:
-    44% dos alunos deste ano estavam matriculados em escola pública. Somente 7% dos alunos foi avaliado como Topázio (melhor nota). 37% dos alunos estavam no ensino fundamental e 9% dos alunos estavam no ensino médio.
-Alunos de 6 - 10 anos representam 16% dos alunos atendidos, 51% dos alunos foram avaliados como Ametista (segunda maior nota) e 25% receberam avaliação Topázio (maior nota).
-Alunos de 11 - 15 anos representam 28% dos alunos atendidos, dos alunos dessa faixa etária 81% estavam matriculados em escola pública e 17% foram avaliados como Quartzo (a menor nota) e somente 8% como Topázio (maior nota). A maior parte desses alunos fazem parte das fases 2 e 3 que são alunos do 5º ao 8º ano.
-Alunos de 16 - 19 anos representam 9% dos alunos atendidos, 65% dos alunos estavam matriculados em escola pública, 35% foram avaliados como Quartzo (menor nota). 
-Aluno de 20 - 22 apenas um aluno tinha mais de 20 anos que ingressou na PM em 2016 e foi avaliado como Ágata.''')
-
-    
+        st.error("As colunas necessárias não estão presentes no DataFrame!")
 
 elif pagina == "Referências":
-    st. image ('Imagens/Passos-magicos-icon-cor.png')
+    st.image('imagens/Passos-magicos-icon-cor.png')  # Agora somente aparece na página Referências
     st.markdown("<h3 style='color:#0367B0;'>Referências</h3>", unsafe_allow_html=True)
-   
-    st.markdown("<h3 style='color:#145089;'>Dados da ONG</h3>", unsafe_allow_html=True)
-    st.write('''https://passosmagicos.org.br/''')
-    st.markdown("<h3 style='color:#145089;'>Dados disponibilizados pela FIAP</h3>", unsafe_allow_html=True)
-    st.write('''https://drive.google.com/drive/folders/1Z1j6uzzCOgjB2a6i3Ym1pmJRsasfm7cD''')
-    st.markdown("<h3 style='color:#145089;'>Dados nascimento em SP</h3>", unsafe_allow_html=True)
-    st.write('''https://spdemografico.seade.gov.br/integra/?analise=a-fecundidade-no-estado-de-sao-paulo-e-em-suas-regioes-administrativas-2000-a-2023&utm_source=chatgpt.com''')
-    st.markdown("<h3 style='color:#145089;'>Dados nascimento em Embu-guaçu</h3>", unsafe_allow_html=True)
-    st.write('''https://primeirainfanciaprimeiro.fmcsv.org.br/municipios/embu-guacu-sp/''')
+    st.write('''
+        1. https://www.h2o.ai/products/h2o-automl/
+         2. https://www.streamlit.io/
+        3. https://www.datacamp.com/community/tutorials/introducing-h2o-automl-python
+        ''')
