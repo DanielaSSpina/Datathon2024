@@ -3,10 +3,14 @@ import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
 import h2o
+import os
 from h2o.automl import H2OAutoML
 
-# Inicializa o H2O
-h2o.init()
+# Verifica se o ambiente não é o Streamlit Cloud
+if "STREAMLIT_CLOUD" not in os.environ:
+    h2o.init()
+else:
+    st.write("H2O não suportado neste ambiente.")
 
 # Limpar o cache de dados do Streamlit
 st.cache_data.clear()
