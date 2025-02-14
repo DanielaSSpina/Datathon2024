@@ -5,6 +5,8 @@ import plotly.graph_objects as go
 import h2o
 import os
 from h2o.automl import H2OAutoML
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
 
 # Verifica se o ambiente não é o Streamlit Cloud
 if "STREAMLIT_CLOUD" not in os.environ:
@@ -93,44 +95,51 @@ elif pagina == "MVP":
     st.image('imagens/Passos-magicos-icon-cor.png')  # Agora somente aparece na página MVP
     st.markdown("<h3 style='color:#0367B0;'>MVP</h3>", unsafe_allow_html=True)
 
-# Inicializar o ambiente H2O
-h2o.init()
+    # Carregar dados
+@st.cache
+def load_data():
+    return pd.read_csv('data/dataset.csv')
 
-# Função para carregar e processar os dados
-def load_and_process_data(file_path):
-    df = pd.read_excel(file_path, sheet_name="VF")
-
-    # Seleção de colunas relevantes
-    columns = ['IAA', 'IPS', 'IPP', 'IPV', 'IAN', 'PONTO_VIRADA']
-    df = df[[col for col in columns if col in df.columns]]
-
-    # Remover valores inconsistentes e preencher NaN
-    df = df[df['PONTO_VIRADA'] != 'Sem dados']
-    df = df.fillna(0)
-
-    return h2o.H2OFrame(df)
-
-# Treinamento do modelo
+# Função para treinar o modelo de previsão
 def train_model(data):
-    # Definir a coluna de resposta e preditores
-    response = 'PONTO_VIRADA'
-    predictors = ['IAA', 'IPS', 'IPP', 'IPV', 'IAN']
+    X = data[['feature1', 'feature2']]  # Substitua com as colunas reais
+    y = data['target']  # Substitua com a coluna alvo real
 
-    # Executar o AutoML
-    aml = H2OAutoML(max_runtime_secs=300, seed=42)
-    aml.train(x=predictors, y=response, training_frame=data)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    model = LinearRegression()
+    model.fit(X_train, y_train)
 
-    return aml.leader
+    return model, X_test, y_test
 
-# Carregar dados
-st.title("MVP de Previsão - Índices")
-uploaded_file = st.file_uploader("Faça upload do dataset (Excel)", type=["xlsx"])
+# Função para exibir o gráfico
+def plot_predictions(model, X_test, y_test):
+    y_pred = model.predict(X_test)
+    plt.scatter(y_test, y_pred)
+    plt.xlabel("Real")
+    plt.ylabel("Previsto")
+    plt.title("Previsões vs Real")
+    st.pyplot()
 
-if uploaded_file:
-    st.success("Dataset carregado com sucesso!")
+# Função principal do Streamlit
+def main():
+    st.title("MVP de Previsão de Preços")
+    
+    st.write("Carregando os dados...")
+    data = load_data()
+    
+    if st.checkbox('Exibir Dados'):
+        st.write(data.head())
 
-    # Processar os dados
-    data = load_and_process_data(uploaded_file)
+    st.write("Treinando o modelo...")
+    model, X_test, y_test = train_model(data)
+    
+    if st.checkbox('Mostrar gráfico de previsão'):
+        plot_predictions(model, X_test, y_test)
+
+    st.write("Modelo treinado com sucesso!")
+
+if __name__ == "__main__":
+    main()
 
     # Treinar o modelo
     st.info("Treinando o modelo... Isso pode levar alguns minutos.")
