@@ -145,12 +145,41 @@ elif pagina == "MVP":
             st.write(f"Categoria: {categoria}")
     else:
         st.error("As colunas necessárias não estão presentes no DataFrame!")
+elif pagina == "Análise":
+    st. image ('imagens/Passos-magicos-icon-cor.png')
+    st.markdown("<h3 style='color:##0367B0;'>Análise PM</h3>", unsafe_allow_html=True)
+
+    st.markdown("<h3 style='color:#145089;>Dados da ONG:</h3>", unsafe_allow_html=True)
+    st.write('''A ONG disponibiliza em seu site dados desde 2016, a partir desses dados foi possível entender que a onde está em uma constante crescente, tanto em quantidade de pessoas atendidas quanto em profissionais contratados, a tendência para os próximos três anos que é a ONG tenha crescimento, principalmente em crianças atendidas e professores contratados, já que são variáveis totalmente relacionadas. 
+Porém para o futuro é bom ter como alerta a taxa de fecundidade que vem diminuindo desde 2017, o que futuramente pode causar um impacto, uma vez que a quantidade de nascidos vivos em Embu-guaçu também acompanha esse declínio.''')
+
+    st.markdown("<h3 style='color:#145089;'>Análise alunos 2020:</h3>", unsafe_allow_html=True)
+    st.write('''Com base no arquivo disponibilizado segue o panorama de atuação da ONG:
+    44% dos alunos deste ano estavam matriculados em escola pública. Somente 7% dos alunos foi avaliado como Topázio (melhor nota). 37% dos alunos estavam no ensino fundamental e 9% dos alunos estavam no ensino médio.
+Alunos de 6 - 10 anos representam 16% dos alunos atendidos, 51% dos alunos foram avaliados como Ametista (segunda maior nota) e 25% receberam avaliação Topázio (maior nota).
+Alunos de 11 - 15 anos representam 28% dos alunos atendidos, dos alunos dessa faixa etária 81% estavam matriculados em escola pública e 17% foram avaliados como Quartzo (a menor nota) e somente 8% como Topázio (maior nota). A maior parte desses alunos fazem parte das fases 2 e 3 que são alunos do 5º ao 8º ano.
+Alunos de 16 - 19 anos representam 9% dos alunos atendidos, 65% dos alunos estavam matriculados em escola pública, 35% foram avaliados como Quartzo (menor nota). 
+Aluno de 20 - 22 apenas um aluno tinha mais de 20 anos que ingressou na PM em 2016 e foi avaliado como Ágata.''')
+    
+    st.markdown("<h3 style='color:#145089;'>Análise alunos 2021:</h3>", unsafe_allow_html=True)
+    st.write('''Com base no arquivo disponibilizado segue o panorama de atuação da ONG:
+    44% dos alunos deste ano estavam matriculados em escola pública. Somente 7% dos alunos foi avaliado como Topázio (melhor nota). 37% dos alunos estavam no ensino fundamental e 9% dos alunos estavam no ensino médio.
+Alunos de 6 - 10 anos representam 16% dos alunos atendidos, 51% dos alunos foram avaliados como Ametista (segunda maior nota) e 25% receberam avaliação Topázio (maior nota).
+Alunos de 11 - 15 anos representam 28% dos alunos atendidos, dos alunos dessa faixa etária 81% estavam matriculados em escola pública e 17% foram avaliados como Quartzo (a menor nota) e somente 8% como Topázio (maior nota). A maior parte desses alunos fazem parte das fases 2 e 3 que são alunos do 5º ao 8º ano.
+Alunos de 16 - 19 anos representam 9% dos alunos atendidos, 65% dos alunos estavam matriculados em escola pública, 35% foram avaliados como Quartzo (menor nota). 
+Aluno de 20 - 22 apenas um aluno tinha mais de 20 anos que ingressou na PM em 2016 e foi avaliado como Ágata.''')
+
+    
 
 elif pagina == "Referências":
-    st.image('imagens/Passos-magicos-icon-cor.png')  # Agora somente aparece na página Referências
+    st. image ('Imagens/Passos-magicos-icon-cor.png')
     st.markdown("<h3 style='color:#0367B0;'>Referências</h3>", unsafe_allow_html=True)
-    st.write('''
-        1. https://www.h2o.ai/products/h2o-automl/
-         2. https://www.streamlit.io/
-        3. https://www.datacamp.com/community/tutorials/introducing-h2o-automl-python
-        ''')
+   
+    st.markdown("<h3 style='color:#145089;'>Dados da ONG</h3>", unsafe_allow_html=True)
+    st.write('''https://passosmagicos.org.br/''')
+    st.markdown("<h3 style='color:#145089;'>Dados disponibilizados pela FIAP</h3>", unsafe_allow_html=True)
+    st.write('''https://drive.google.com/drive/folders/1Z1j6uzzCOgjB2a6i3Ym1pmJRsasfm7cD''')
+    st.markdown("<h3 style='color:#145089;'>Dados nascimento em SP</h3>", unsafe_allow_html=True)
+    st.write('''https://spdemografico.seade.gov.br/integra/?analise=a-fecundidade-no-estado-de-sao-paulo-e-em-suas-regioes-administrativas-2000-a-2023&utm_source=chatgpt.com''')
+    st.markdown("<h3 style='color:#145089;'>Dados nascimento em Embu-guaçu</h3>", unsafe_allow_html=True)
+    st.write('''https://primeirainfanciaprimeiro.fmcsv.org.br/municipios/embu-guacu-sp/''')
