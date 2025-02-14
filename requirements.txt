@@ -42,3 +42,4 @@ watchdog==6.0.0
 plotly
 h2o
 openpyxl
+# Forçar atualização
