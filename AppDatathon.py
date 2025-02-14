@@ -185,17 +185,17 @@ Apesar disso é possível notar que houve um aumento considerável nos alunos av
     Data de nascimento, Data de ingresso na PM, ID do aluno (código único de cada aluno para ter rastreio sem o nome vinculado), raça, instituição de ensino, todas as notas de avaliação utilizadas, INDE e Pedras''')
 
 elif pagina == "Referências":
-    st. image ('Imagens/Passos-magicos-icon-cor.png')
-    st.markdown("<h3 style='color:#0367B0;'>Referências</h3>", unsafe_allow_html=True)
+     st. image ('Imagens/Passos-magicos-icon-cor.png')
+     st.markdown("<h3 style='color:#0367B0;'>Referências</h3>", unsafe_allow_html=True)
    
-    st.markdown("<h3 style='color:#145089;'>Dados da ONG</h3>", unsafe_allow_html=True)
-    st.write('''https://passosmagicos.org.br/''')
-    st.markdown("<h3 style='color:#145089;'>Dados disponibilizados pela FIAP</h3>", unsafe_allow_html=True)
-    st.write('''https://drive.google.com/drive/folders/1Z1j6uzzCOgjB2a6i3Ym1pmJRsasfm7cD''')
-    st.markdown("<h3 style='color:#145089;'>Dados nascimento em SP</h3>", unsafe_allow_html=True)
-    st.write('''https://spdemografico.seade.gov.br/integra/?analise=a-fecundidade-no-estado-de-sao-paulo-e-em-suas-regioes-administrativas-2000-a-2023&utm_source=chatgpt.com''')
-    st.markdown("<h3 style='color:#145089;'>Dados nascimento em Embu-guaçu</h3>", unsafe_allow_html=True)
-    st.write('''https://primeirainfanciaprimeiro.fmcsv.org.br/municipios/embu-guacu-sp/''')
+     st.markdown("<h3 style='color:#145089;'>Dados da ONG</h3>", unsafe_allow_html=True)
+     st.write('''https://passosmagicos.org.br/''')
+     st.markdown("<h3 style='color:#145089;'>Dados disponibilizados pela FIAP</h3>", unsafe_allow_html=True)
+     st.write('''https://drive.google.com/drive/folders/1Z1j6uzzCOgjB2a6i3Ym1pmJRsasfm7cD''')
+     st.markdown("<h3 style='color:#145089;'>Dados nascimento em SP</h3>", unsafe_allow_html=True)
+     st.write('''https://spdemografico.seade.gov.br/integra/?analise=a-fecundidade-no-estado-de-sao-paulo-e-em-suas-regioes-administrativas-2000-a-2023&utm_source=chatgpt.com''')
+     st.markdown("<h3 style='color:#145089;'>Dados nascimento em Embu-guaçu</h3>", unsafe_allow_html=True)
+     st.write('''https://primeirainfanciaprimeiro.fmcsv.org.br/municipios/embu-guacu-sp/''')
 
 
 
