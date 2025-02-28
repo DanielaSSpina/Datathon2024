@@ -46,3 +46,4 @@ matplotlib
 numpy
 streamlit
 scikit-learn==1.6.1
+plotly
